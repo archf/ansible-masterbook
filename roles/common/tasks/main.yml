@@ -1,0 +1,23 @@
+---
+# file: roles/common/tasks/main.yml
+- name: test connection
+  ping:
+  # remote_user: vagrant
+
+# - name: no selinux2
+#   command: /usr/sbin/setenforce 0
+#   remote_user: vagrant
+
+# - name: show who as the lock
+#   command:
+
+- name: Install bind on a debian or derivative distribution
+  sudo: yes
+  apt: name=bind9 state=latest update_cache=yes
+  # remote_user: vagrant
+  # remote_user: root
+  when: ansible_os_family == "Debian"
+
+- name: Install bind on a rhel|fedora or derivative distribution
+  yum: name=bind state=latest
+  when: ansible_os_family == "RedHat"

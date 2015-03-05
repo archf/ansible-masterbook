@@ -1,8 +1,8 @@
 # file: production
 
-172.168.2.160
-172.168.2.160
+172.16.2.160 ansibles_ssh_user=vagrant
+172.16.2.161 ansibles_ssh_user=vagrant
 
 [vagrant-servers]
-172.168.2.160
-172.168.2.160
+172.16.2.160
+172.16.2.161
