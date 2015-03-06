@@ -4,20 +4,23 @@
   ping:
   # remote_user: vagrant
 
-# - name: no selinux2
-#   command: /usr/sbin/setenforce 0
-#   remote_user: vagrant
-
-# - name: show who as the lock
-#   command:
-
-- name: Install bind on a debian or derivative distribution
+- name: installing default packages on any machine
   sudo: yes
-  apt: name=bind9 state=latest update_cache=yes
-  # remote_user: vagrant
-  # remote_user: root
+  apt: name={{ item }} state=latest
+  with_items:
+    - tmux
+    - gvim
+    - vim
+    - python3
+    - htop
+    - git
+    - fakeroot
+    - tree
+    - wireshark
+    - openssh-server
+    - gdisk
+    - rsync
+    - lvm2
+    - libncurses5-dev
+    - libncurses5
   when: ansible_os_family == "Debian"
-
-- name: Install bind on a rhel|fedora or derivative distribution
-  yum: name=bind state=latest
-  when: ansible_os_family == "RedHat"

@@ -1,5 +1,0 @@
----
-# file: vagrantservers.yml
-- hosts: vagrant-servers
-  roles:
-      - common
