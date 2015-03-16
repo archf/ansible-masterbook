@@ -1,5 +1,5 @@
 ---
-# file: ansible-masterbook/vdns.yml
+# file: vdns.yml
 - hosts: vagrant-dns
   roles:
       - common

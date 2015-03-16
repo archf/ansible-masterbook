@@ -1,0 +1,19 @@
+# file: vagrant
+
+[vagrant-dns]
+mdns
+sdns
+
+[masterdns:chilren]
+mdns
+
+[slavedns:chilren]
+sdns
+
+[cachedns:chilren]
+cdns
+
+# grouve variables
+[vagrant-dns:vars]
+ansibles_ssh_user=vagrant
+

@@ -4,19 +4,19 @@
   ping:
   # remote_user: vagrant
 
-- name: installing default packages on any machine
+- name: installing common packages on Debian || Ubuntu derivative machine
   sudo: yes
   apt: name={{ item }} state=latest
   with_items:
     - tmux
-    - gvim
+    - git
+    - vim-gtk
     - vim
     - python3
     - htop
     - git
     - fakeroot
     - tree
-    - wireshark
     - openssh-server
     - gdisk
     - rsync
@@ -24,3 +24,34 @@
     - libncurses5-dev
     - libncurses5
   when: ansible_os_family == "Debian"
+
+- name: upgrade all packages Debian || Ubuntu derivative machine
+  sudo: yes
+  apt: name=* state=latest
+  when: ansible_os_family == "Debian"
+
+- name: installing common packages on Fedora || RHEL  derivative machine
+  sudo: yes
+  yum: name={{ item }} state=latest
+  with_items:
+    - tmux
+    - git
+    # vim conflicts with vim minimal
+    # - vim-common
+    # - vim-X11
+    - python3
+    - htop
+    - git
+    - tree
+    - openssh-server
+    - gdisk
+    - rsync
+    - lvm2
+    - ncurses-devel
+    - ncurses
+  when: ansible_os_family == "RedHat"
+
+- name: upgrade all packages  on Fedora || RHEL  derivative machine
+  sudo: yes
+  yum: name=* state=latest
+  when: ansible_os_family == "RedHat"
