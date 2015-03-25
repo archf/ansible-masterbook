@@ -1,0 +1,6 @@
+---
+packager: yum
+packages:
+  - python3-ipython
+  - python3-ipdb
+  - python3-devel

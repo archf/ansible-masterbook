@@ -1,0 +1,19 @@
+---
+packager: apt
+packages:
+  - tmux
+  - git
+  - vim-gtk
+  - vim
+  - python3
+  - htop
+  - git
+  - fakeroot
+  - tree
+  - openssh-server
+  - gdisk
+  - rsync
+  - lvm2
+  - libncurses5-dev
+  - libncurses5
+  - nmap

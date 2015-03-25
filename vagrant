@@ -1,4 +1,6 @@
 # file: vagrant
+#
+# this is the inventory file
 
 [vagrant-dns]
 mdns
@@ -16,4 +18,3 @@ cdns
 # grouve variables
 [vagrant-dns:vars]
 ansibles_ssh_user=vagrant
-

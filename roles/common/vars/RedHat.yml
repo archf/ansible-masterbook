@@ -1,0 +1,19 @@
+---
+packager: yum
+packages:
+  - tmux
+  - git
+  - python3
+  - htop
+  - git
+  - tree
+  - openssh-server
+  - gdisk
+  - rsync
+  - lvm2
+  - ncurses-devel
+  - ncurses
+  - nmap
+  # vim conflicts with vim minimal
+  # - vim-common
+  # - vim-X11

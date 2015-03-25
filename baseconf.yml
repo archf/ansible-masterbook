@@ -1,0 +1,41 @@
+---
+# - hosts: 127.0.0.1
+#   connection: local
+- hosts: all
+  roles:
+  - common
+
+# - hosts: all
+#   - name: Create a group of all hosts by operating system
+#       group_by: key={{ansible_distribution}}-{{ansible_distribution_version}}
+#       group_by: key={{ansible_os_family}}group_by: key={{ansible_os_family}}
+
+# # talk to all hosts just so we can learn about them
+# - hosts: all
+#   tasks:
+#      - group_by: key=os_{{ ansible_distribution }}
+
+# # now just on the CentOS hosts...
+
+# - hosts: os_CentOS
+#   gather_facts: False
+#   tasks:
+#      - # tasks that only happen on CentOS go here
+
+# roles:
+#   - { role: redhat_stock, when: "ansible_os_family == 'RedHat'" }
+#   - { role: debian_stock, when: "ansible_os_family == 'Debian'" }
+# - hosts: Redhat
+
+### or it could be done with something like ###
+
+#   - name: ping all Redhat hosts
+#     ping:
+
+# - hosts: Redhat
+#   roles:
+#   - redhat_stock
+
+# - hosts: Debian
+#   roles:
+#   - debian_stock

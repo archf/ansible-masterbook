@@ -1,0 +1,6 @@
+---
+packager: apt
+packages:
+  - ipython3
+  - python-dev
+  - ipdb

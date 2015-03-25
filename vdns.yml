@@ -1,6 +1,7 @@
 ---
 # file: vdns.yml
 - hosts: vagrant-dns
+
   roles:
-      - common
-      - dns
+    - common
+    - dns
