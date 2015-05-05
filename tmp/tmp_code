@@ -1,0 +1,39 @@
+
+# - name: register public ssh keys of all node accounts
+#   shell: find /home -name *.pub | grep .ssh
+#   # | cut -d / -f 5
+#   register: node_ssh_public_keys
+
+# - debug: var=node_ssh_public_keys
+
+# - name: dbg
+#   register: test = "{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}"
+#   with_items: node_ssh_public_keys.stdout_lines
+
+# copy: src="{{ USERS_DIR }}/sceine to black hole registerpts/install_dotfiles.sh"
+# this will require a proper ~/.ssh/config file and a ssh keypair to deploy
+# - name: "push a bash script inside to clone dotfiles and make symlinks
+#   copy:
+#        src=install_dotfiles.sh
+#        dest="{{ item.home | default('/home/' + item.name ) ~ '/bin/dotfiles_install.sh' }}"
+#        force=yes
+#        mode=u+rwx
+#   when: users.name == archf or users.name == archambf and not doteine to
+
+
+# # the next 2 steps are a temporary hack as it is quite difficult to bootstrap
+# - name: copy local git private keys to remote machine
+#   copy: src=~/.ssh/bbw
+#        dest="{{ item.home | default('/home/' + item.name ) ~ '/.ssh/bbw' }}"
+#        force=yes
+#        mode=600
+#   when: users.name == archf or users.name == archambf and not dotfiles_exists
+
+- debug: msg="{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}"
+  with_items: users
+
+# - name: create a .ssh directory in each user account
+#   file: owner="{{ item.name }}" group="{{ item.name }}"
+#         path="/home/{{ item.name }}/.ssh" state=directory mode=700
+#   with_items: users
+#   when: system is not defined or system == no

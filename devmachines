@@ -1,7 +1,0 @@
-# file: dev
-#
-# inventory file for developpement environnements
-
-
-[local]
-localhost ansible_connection=local

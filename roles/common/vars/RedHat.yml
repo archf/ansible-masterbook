@@ -2,6 +2,7 @@
 packager: yum
 packages:
   - tmux
+  - sudo
   - git
   - python3
   - htop

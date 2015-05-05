@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  remote_user: root
+  connection:
+  vars:
+    favcolor: blue
+  vars_files:
+    - /vars/external_vars.yml
+
+  tasks:
+
+  - name: this is just a placeholder
+    command: /bin/echo foo
+
+  roles:
+      - a
+      - b
+      - c

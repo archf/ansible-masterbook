@@ -1,0 +1,6 @@
+---
+# this role is to update dotfiles repos on each node
+
+- hosts: all
+  roles:
+    - dotfiles

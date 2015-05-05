@@ -2,6 +2,7 @@
 packager: apt
 packages:
   - tmux
+  - mosh
   - git
   - vim-gtk
   - vim

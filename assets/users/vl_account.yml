@@ -1,0 +1,93 @@
+---
+
+### by default i create my account on each remote machine
+# NOTE: ansible fails when lists are undefined. The current workaround is to
+# define an empty list
+users:
+  - name: archf
+    groups: 'adm,wheel,lp'
+    append: yes
+    password: 'admin'
+    comments: 'Felix Archambault'
+    ssh_keys:
+      - "{{ USERS_DIR }}/public_keys/vl.pub"
+      # - "{{ USERS_DIR }}/public_keys/desktop.pub"
+      # - "{{ USERS_DIR }}/public_keys/laptop.pub"
+      # - "{{ playbook_dir }}/assets/users/public_keys/laptop.pub"
+      # - "{{ playbook_dir }}/assets/users/public_keys/desktop.pub"
+      # - "{{ playbook_dir }}/assets/users/public_keys/vl.pub"
+    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
+    dotfiles_https: 'https://archambf@bitbucket.org/archambf/dotfiles.git'
+    extra_ssh_keys:
+      - github
+      - bitbucket
+    # state: absent
+    # remove: yes
+  - name: user3
+    groups: []
+    password: 'admin'
+    comments: 'this is user 1'
+    ssh_keys: []
+    extra_ssh_keys: []
+    # state: absent
+    # remove: yes
+  - name: user4
+    groups: []
+    append: yes
+    password: password'admin'
+    comments: 'this is user 2'
+    ssh_keys: []
+    extra_ssh_keys: []
+
+# users_removed:
+#   - user1
+#   - user2
+#   - user3
+#   - user4
+
+
+### template
+
+# users: []
+# groups: []
+# users_removed: []
+# groups_removed: []
+
+# users:
+#   - name: "foo"
+#     groups:
+#       - adm
+#       - wheel
+#       - lp
+#     ssh_keys:           # Keys to add to authorized_keys
+#       - "ssh-1"
+#       - "ssh-2"
+#     append: "no"        # (Optional) yes by default
+#     pass: "$6$...."     # (Optional) Set the user's password to this crypted value.
+#     comment: "bla"      # (Optional) ???
+#     shell: "/bin/bash"  # (Optional) Set the user's shell. defaults to /bin/bash
+#     home: "/home/foo"   # (Optional) default to /home/<username>
+#     system: no          # (Optional)
+#     move_home: no       # (Optional)
+#     non_unique: no      # (Optional)
+#     update_password: no # (Optional) default to always (will change passwd if they differ
+#   - name: "baz"
+#     groups:
+#       - adm
+#       - wheel
+#       - lp
+#     ssh_keys: []
+
+# groups:
+#   - name: "foo"
+#     gid: 2000           # (Optional)
+#     system: no          # (Optional)
+#   - name: "bar"
+#     gid: 4000
+#     system: no
+
+# users_removed:
+#   - name: bambi
+
+# groups_removed:
+#   - name: "dead-group"

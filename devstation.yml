@@ -1,0 +1,21 @@
+---
+# a playbook to apply on self (i.e update your workstation
+# - hosts: localhost
+#   connection: local
+- hosts: all
+  remote_user: root
+  # by default i create my account on each remote machine
+  # use an external var file like so to override:
+  # vars_files:
+  #   - "{{ playbook_dir }}/assets/account_profiling/default.yml"
+  roles:
+    - { role: accounts, accounts_profile: vl_account.yml }
+      # - accounts
+    # - { role: accounts, useraccountfiles: [ default.yml ]}
+
+# - hosts: localhost
+
+#   roles:
+#     - common
+#     - dotfiles
+#     - devstation

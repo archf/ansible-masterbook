@@ -1,0 +1,8 @@
+# file:  localhost
+#
+# inventory file for developpement environnements
+
+# localhost ansible_connection=local
+
+# [local]
+# localhost ansible_connection=local
