@@ -6,6 +6,10 @@ Host *
   ForwardX11 no
   ForwardX11Trusted yes
   IdentityFile ~/.ssh/{{ item.name }}_{{ ansible_fqdn }}
+  # enable multiplexing
+  ControlPersist 10m
+  ControlMaster auto
+  ControlPath ~/.ssh/controlmasters/%r@%h:%p
 
 ### personal machines ###
 {% if item.name == 'archf' %}
