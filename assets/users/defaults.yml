@@ -9,18 +9,22 @@ users:
     append: yes
     password: 'admin'
     comments: 'Felix Archambault'
-    ssh_keys:
-      - "{{ USERS_DIR }}/public_keys/vl.pub"
+    # should this be in a host var or group var (on a per group or machine basis)
+    # keys to remote access the target
+    management_ssh_keys:
+      - "{{ USERS_DIR }}/public_keys/test.pub"
       # - "{{ USERS_DIR }}/public_keys/desktop.pub"
       # - "{{ USERS_DIR }}/public_keys/laptop.pub"
       # - "{{ playbook_dir }}/assets/users/public_keys/laptop.pub"
       # - "{{ playbook_dir }}/assets/users/public_keys/desktop.pub"
       # - "{{ playbook_dir }}/assets/users/public_keys/vl.pub"
-    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
-    dotfiles_https: 'https://archambf@bitbucket.org/archambf/dotfiles.git'
+    # other keys that will be generated
     extra_ssh_keys:
       - github
       - bitbucket
+    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
+    #unused
+    dotfiles_https: 'https://archambf@bitbucket.org/archambf/dotfiles.git'
     # state: absent
     # remove: yes
   # - name: user3

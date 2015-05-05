@@ -77,7 +77,7 @@
     ssh_key_type: rsa
     ssh_key_bits: 2048
     ssh_key_file: ".ssh/{{ item.name }}_{{ ansible_fqdn }}"
-    # # update_password: "{{ item.update_password | default('always') }}"
+    # update_password: "{{ item.update_password | default('always') }}"
   with_items: users
 
   # this is somehow skipped when run on localhost
@@ -86,8 +86,8 @@
                   key="{{ lookup('file', item.1) }}"
   with_subelements:
   - users
-  - ssh_keys
-  when: item.ssh_keys is defined and item.state is not defined or item.state != 'absent'
+  - management_ssh_keys
+  when: item.ssh_keys is defined and item.state is not defined and item.state != 'absent'
   # when: ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'
   # when: "{{ item.0 }}.ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'"
 
