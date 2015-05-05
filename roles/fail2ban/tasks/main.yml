@@ -1,0 +1,18 @@
+---
+
+- name: install fail2ban package on RHEL derivative family machine
+  yum: name=fail2ban state=latest
+  when: {{ ansible_os_family }} == "RedHat"
+
+- name: install fail2ban package on Debian derivative family machine
+  apt: name=fail2ban state=latest
+  when: {{ ansible_os_family }} == "Debian"
+
+  # todo: - add jail.conf configurations to files and copy to target machine.
+        # - check if defaults are fine
+        # - ensure service is running (if conf is changed, reboot service)
+
+- name: configure fail2ban service to start on boot and to now be running
+  service: name=fail2ban stated=started enabled=true
+
+
