@@ -87,7 +87,7 @@
   with_subelements:
   - users
   - ssh_keys
-  when: ssh_keys is defined and state is not defined or state != 'absent'
+  when: item.ssh_keys is defined and item.state is not defined or item.state != 'absent'
   # when: ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'
   # when: "{{ item.0 }}.ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'"
 
@@ -96,7 +96,7 @@
   with_subelements:
   - users
   - extra_ssh_keys
-  when: system is not defined or system == no
+  when: item.system is not defined or item.system == no
 
 # dest="{{ playbook_dir }}/assets"
 - name: fetch the ssh public keys on every account of each node to control machine
@@ -107,7 +107,21 @@
   template: src=ssh.config.j2 dest="{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}" owner="{{ item.name }}" group="{{ item.name }}" mode=0600
   with_items: users
 
-# this part could be managed through ad-hoc commands
+- name: create a bin directory in each user account
+  file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/bin' }}" state=directory mode=700
+  with_items: users
+  when: item.system is not defined or item.system == no
+
+  # each user have to install his previously generated git public key to
+  # the git remote server before cloning the repo over ssh. This could be automated
+  # for private git servers ( != bitbucket or github )
+- name: template a bash script to manually install dotfiles
+  template: src=inst_dotfiles.j2 dest="{{ item.home | default('/home/' + item.name) ~ '/bin/inst_dotfiles.sh' }}" owner="{{ item.name }}" group="{{ item.name }}" mode=0700
+  with_items: users
+  when: item.dotfiles_ssh is defined and item.system is not defined or system == no
+
+# this part could be managed through ad-hoc commands or inside another task
+# file. It could probably be removed from here.
 - name: removing unwanted groups (listed in 'groups_removed' dict)
   group: name="{{ item }}" state=absent
   with_items: groups_removed

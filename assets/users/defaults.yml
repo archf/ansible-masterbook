@@ -23,19 +23,19 @@ users:
       - bitbucket
     # state: absent
     # remove: yes
-  - name: user3
-    password: 'admin'
-    comments: 'this is user 1'
-    ssh_keys: []
-    extra_ssh_keys: []
-    # state: absent
-    # remove: yes
-  - name: user4
-    append: yes
-    password: password'admin'
-    comments: 'this is user 2'
-    ssh_keys: []
-    extra_ssh_keys: []
+  # - name: user3
+  #   password: 'admin'
+  #   comments: 'this is user 1'
+  #   ssh_keys: []
+  #   extra_ssh_keys: []
+  #   # state: absent
+  #   # remove: yes
+  # - name: user4
+  #   append: yes
+  #   password: password'admin'
+  #   comments: 'this is user 2'
+  #   ssh_keys: []
+  #   extra_ssh_keys: []
 
 # users_removed:
 #   - user1
