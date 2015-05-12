@@ -2,6 +2,7 @@
 packager: yum
 packages:
   - tmux
+  - mosh
   - sudo
   - git
   - python3
@@ -15,6 +16,8 @@ packages:
   - ncurses-devel
   - ncurses
   - nmap
-  # vim conflicts with vim minimal
-  # - vim-common
-  # - vim-X11
+  - fail2ban
+  - gcc
+  - kernel-devel
+  - vim-common
+  - vim-X11
