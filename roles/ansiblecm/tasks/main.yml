@@ -1,0 +1,18 @@
+---
+
+# add a depdendancy to python
+- name: install ansible
+  sudo: yes
+  action: "{{ ansible_pkg_mgr }} pkg=ansible state=latest"
+
+- name: install ansible-playbook-debugger
+  sudo: yes
+  shell: pip install ansible-playbook-debugger
+
+- name: enable ssh multiplexing
+  sudo: yes
+  lineinfile: dest=/etc/ansible/ansible.cfg backup=yes regexp="^#ssh_args.*" line='ssh_args = -o ControlMaster=auto -o ControlPersist=60s' state=present
+
+- name: make ansible use scp instead of sftp
+  sudo: yes
+  lineinfile: dest=/etc/ansible/ansible.cfg backup=yes regexp="^#scp_if_ssh(.*)" line='scp_if_ssh = True' state=present
