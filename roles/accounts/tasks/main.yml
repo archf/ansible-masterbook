@@ -5,54 +5,21 @@
 
 #NOTE: to bootstrap properly one should invoke this role with 'remote_user:
 # root' to be able to create the first non root account from wich one can work
+# another option is to run it against an account with administrator privilege.
 
-# - name: load external vars_files (accounts in defaults.yml by default)
-#   include_vars: "{{ USERS_DIR }}/defaults.yml"
-#   when: accounts_profile is not defined
 
-# - name: load external vars_files (override accounts in defaults.yml)
-#   include_vars: "{{ USERS_DIR }}/{{ accounts_profile }}"
-#   when: accounts_profile is defined
-
-# role summary:
-# 1. create groups
-# 2. create users and add them to groups created in step 1 and create a ssh key
-# pair for each of them (all of this using the user module)
-# 3. Install a public ssh key to authorized_keys to remotely manage the machine
-# 4. Generate ssh keys for github, bitbucket or any other git repo specified
-  # in the users variable
-# 5. Copy the public key to the control machine
-# 6. Template the ~/.ssh/config in order to be able to use the keys
-# 7. Template a simple bash script to clone dotfiles repos after a user has
-#    manually install his public key in the ssh repo.
-
-#    For dotfiles repo, SSH keys should not be used on shared machines with
-#    shared root access unless you want someone to overwrite your git repo.
-#    In fact,
-#      - use an url in the users variable on machines with shared root acces
-#      - Use a ssh repo on machinnes you trust
-
-# - include: "{{ playbook_dir }}/task_lib/load_users_vars.yml"
-
-# - debug: var="{{ playbook_dir }}"
-# - debug: var="{{ USERS_DIR }}"
-# - debug: var="{{ users }}"
-# - debug: var="{{ users.groups|join(',') }}"
-# - debug: var="{{ users.name.groups }}"
-# - debug: var="{{ groupsz }}"
-# - debug: var="{{','.join(groups)| default('') }}"
-# - debug: var="{{','.join(groupsz) }}"
-
-# - name: adding unexisting groups (for users to be part of)
-#   group:
-#     name: "{{ item.groups }}"
-#     state: "{{ item.state | default('present') }}"
-#     system: "{{ item.system | default('no') }}"
-#     with_items: users
-#     when: groups is defined
+#  Fixme: add multiple groups from list
+# # group: name="{{ item.groups }}" state="{{ item.state | default('present') }}" system="{{ item.system | default('no') }}"
+# - name: adding default groups that should always be present (for users to be part of)
+#   group: name="{{ item }}" system=yes
+#   with_subelements:
+#     - users
+#     - groups
+  # when: groups is defined
+  # with_items: users
 
 # somehow this task does not work well to remove users and therefore
-# one should use another after to remove users
+# one should use it to remove users
 - name: adding unexisting users
   user:
     name: "{{ item.name }}"
@@ -77,30 +44,18 @@
     ssh_key_type: rsa
     ssh_key_bits: 2048
     ssh_key_file: ".ssh/{{ item.name }}_{{ ansible_fqdn }}"
-    # update_password: "{{ item.update_password | default('always') }}"
+    update_password: "{{ item.update_password | default('on_create') }}"
   with_items: users
 
-  # this is somehow skipped when run on localhost
-- name: Install listed public ssh keys for each users (for remote management)
-  authorized_key: user="{{ item.0.name }}"
-                  key="{{ lookup('file', item.1) }}"
+  # taken literaly from the ansible manual
+- name: Install public ssh keys for each users (for remote management)
+  authorized_key: "user={{ item.0.name }} key='{{ lookup('file', item.1) }}'"
   with_subelements:
   - users
-  - management_ssh_keys
-  when: item.ssh_keys is defined and item.state is not defined and item.state != 'absent'
-  # when: ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'
-  # when: "{{ item.0 }}.ssh_keys is defined and item.0.state is not defined or item.0.state != 'absent'"
+  - authorized
 
-- name: generate ssh key pairs to access public git repos (bitbucket & github)
-  script: gen_ssh_key.sh -d {{ item.0.home | default('/home/' + item.0.name) }} -k {{ item.0.name }}_{{ item.1 }}_{{ ansible_fqdn }}
-  with_subelements:
-  - users
-  - extra_ssh_keys
-  when: item.system is not defined or item.system == no
-
-# dest="{{ playbook_dir }}/assets"
-- name: fetch the ssh public keys on every account of each node to control machine
-  fetch: src="{{ item }}" dest="{{ USERS_DIR }}/" flat=yes
+- name: fetch the ssh public keys of every account to control machine
+  fetch: src="{{ item.home | default('/home/' + item.name) }}/.ssh/{{ item.name }}_{{ ansible_fqdn }}.pub" dest="{{ ASSETS_DIR }}/public_keys/" flat=yes
   with_items: users
 
 - name: template a ~/.ssh/config in each user account
@@ -110,7 +65,13 @@
 - name: create a bin directory in each user account
   file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/bin' }}" state=directory mode=700
   with_items: users
-  when: item.system is not defined or item.system == no
+  when: item.dotfiles_ssh is defined or item.system is not defined
+
+  # this is for temporary files ex: vim swap and backup file
+- name: create a tmp directory in each user account
+  file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/tmp' }}" state=directory mode=700
+  with_items: users
+  when: item.system is not defined or item.system == false
 
   # each user have to install his previously generated git public key to
   # the git remote server before cloning the repo over ssh. This could be automated
@@ -118,16 +79,4 @@
 - name: template a bash script to manually install dotfiles
   template: src=inst_dotfiles.j2 dest="{{ item.home | default('/home/' + item.name) ~ '/bin/inst_dotfiles.sh' }}" owner="{{ item.name }}" group="{{ item.name }}" mode=0700
   with_items: users
-  when: item.dotfiles_ssh is defined and item.system is not defined or system == no
-
-# this part could be managed through ad-hoc commands or inside another task
-# file. It could probably be removed from here.
-- name: removing unwanted groups (listed in 'groups_removed' dict)
-  group: name="{{ item }}" state=absent
-  with_items: groups_removed
-  when: groups_removed is defined
-
-- name: removing unwanted users (listed in 'users_removed' dict)
-  user: name="{{ item }}" state=absent remove=yes
-  with_items: users_removed
-  when: users_removed is defined
+  when: item.dotfiles_ssh is defined
