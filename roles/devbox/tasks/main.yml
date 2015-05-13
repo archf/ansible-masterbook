@@ -7,5 +7,5 @@
 
 - name: install python3 packages
   sudo: yes
-  action: "{{ packager }} pkg={{ item }} state=latest"
+  action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=latest"
   with_items: packages
