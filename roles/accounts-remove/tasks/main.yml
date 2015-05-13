@@ -1,0 +1,23 @@
+---
+
+# this part could be managed through ad-hoc commands or inside another task
+# file. It could probably be removed from here.
+
+# users_removed: []
+# groups_removed: []
+
+# users_removed:
+#   - name: bambi
+
+# groups_removed:
+#   - name: "dead-group"
+
+# - name: removing unwanted groups (listed in 'groups_removed' dict)
+#   group: name="{{ item }}" state=absent
+#   with_items: groups_removed
+#   when: groups_removed is defined
+
+# - name: removing unwanted users (listed in 'users_removed' dict)
+#   user: name="{{ item }}" state=absent remove=yes
+#   with_items: users_removed
+#   when: users_removed is defined
