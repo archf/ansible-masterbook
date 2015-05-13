@@ -24,7 +24,6 @@ Host rhtpc
 Host hgw
   Hostname OpenWrt
   User root
-  IdentityFile ~/.ssh/gw-main
 
 Host rhgw
   Hostname OpenWrt
@@ -37,13 +36,11 @@ Host bitbucket.org
   HostName bitbucket.org
   User git
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/{{ item.name }}_bitbucket_{{ ansible_fqdn }}
 
 Host github.com
   Hostname github.com
   User git
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/{{ item.name }}_github_{{ ansible_fqdn }}
 {% endif %}
 
 # cygwin ssh to local vm
@@ -79,5 +76,4 @@ Host lv820
   Hostname 10.247.42.63
   User archambf
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/vl-lb-hmv820
 {% endif %}
