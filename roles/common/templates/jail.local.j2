@@ -1,0 +1,16 @@
+# file: jail.local
+# This configuration file overrides the settings in jail.conf
+
+
+[INCLUDES]
+
+#before = paths-distro.conf
+before = paths-{{ ansible_distribution|lower }}.conf
+
+[DEFAULT]
+
+maxretry = 7
+
+[sshd]
+maxretry = 7
+enabled = true

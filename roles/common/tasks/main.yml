@@ -8,9 +8,20 @@
 
 - name: upgrade all packages
   sudo: yes
-  action: "{{ packager }} pkg=* state=latest"
+  action: "{{ ansible_pkg_mgr }} pkg=* state=latest"
 
 - name: installing default packages
   sudo: yes
-  action: "{{ packager }} pkg={{ item }} state=latest"
+  action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=latest"
   with_items: packages
+
+- name: disable selinux for now
+  selinux: state=disabled
+
+- name: template jail2ban jail.local configuration file
+  sudo: yes
+  template: src=jail.local.j2 dest=/etc/fail2ban/jail.local group=root owner=root mode=0644 backup=yes
+
+- name: configure fail2ban service to start on boot and to now be running
+  service: name=fail2ban state=started enabled=true
+

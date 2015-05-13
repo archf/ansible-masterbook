@@ -1,5 +1,5 @@
 ---
-packager: apt
+# packager: apt
 packages:
   - tmux
   - mosh
@@ -18,3 +18,6 @@ packages:
   - libncurses5-dev
   - libncurses5
   - nmap
+  - fail2ban
+  - gcc
+  - linux-kernel-headers
