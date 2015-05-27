@@ -21,3 +21,4 @@ packages:
   - fail2ban
   - gcc
   - linux-kernel-headers
+  - zsh

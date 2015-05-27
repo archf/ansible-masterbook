@@ -21,3 +21,4 @@ packages:
   - kernel-devel
   - vim-common
   - vim-X11
+  - zsh
