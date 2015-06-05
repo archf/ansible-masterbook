@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  remote_user: root
+
+  vars:
+
+  vars_files:
+  - assets/users/defaults.yml
+
+  roles:
+    - common
+    - accounts
+
+    # not needed now
+    # - ntpd

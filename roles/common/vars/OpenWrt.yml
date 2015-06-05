@@ -1,0 +1,19 @@
+---
+# list of packages to install by default on any openwrt os
+
+packages:
+  - 6rd
+  - zsh
+  - vim
+  - tmux
+  - tcpdump
+  - git
+  - nmap
+  - rsync
+  - shadow
+  - sudo
+  - bind-dig
+  - python
+  - block-mount
+  - kmod-usb-storage
+  - kmod-fs-ext4

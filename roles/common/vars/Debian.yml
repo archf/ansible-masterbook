@@ -1,5 +1,5 @@
 ---
-# packager: apt
+# list of packages to install by default on any debian family system
 packages:
   - tmux
   - mosh
@@ -22,3 +22,4 @@ packages:
   - gcc
   - linux-kernel-headers
   - zsh
+  - sshpash

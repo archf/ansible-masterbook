@@ -1,5 +1,6 @@
 ---
-packager: yum
+# list of packages to install by default on any rhel family system
+
 packages:
   - tmux
   - mosh
@@ -22,3 +23,4 @@ packages:
   - vim-common
   - vim-X11
   - zsh
+  - sshpass
