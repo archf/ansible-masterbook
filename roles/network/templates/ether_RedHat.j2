@@ -1,0 +1,49 @@
+TYPE=Ethernet
+DEVICE={{ item.device }}
+IPV4_FAILURE_FATAL=no
+{% if item.onboot is defined %}
+ONBOOT={{ item.onboot }}
+{% endif %}
+{# static configuration #}
+{% if item.bootproto == 'static' or item.bootproto == 'none' %}
+BOOTPROTO=none
+{% if item.ip is defined %}
+IPADDR={{ item.ip }}
+{% endif %}
+{% if item.netmask is defined %}
+NETMASK={{ item.netmask }}
+{% endif %}
+{% if item.gw is defined %}
+GATEWAY={{ item.gw }}
+{% endif %}
+{% if item.prefix is defined %}
+PREFIX={{ item.prefix }}
+{% endif %}
+{% endif %}
+{# dns for resolv.conf if peerdns is not defined or set to no #}
+{% if item.peerdns is defined and item.peerdns == 'yes'  %}
+PEERDNS=yes
+{% if item.dns1 is defined %}
+DNS1={{ item.dns1 }}
+{% endif %}
+{% if item.dns2 is defined %}
+DNS2={{ item.dns2 }}
+{% endif %}
+{% if item.dns3 is defined %}
+DNS3={{ item.dns3 }}
+{% endif %}
+{% else %}
+PEERDNS=no
+{% endif %}
+{# dynamic #}
+{% if item.bootproto == 'dhcp' %}
+BOOTPROTO=dhcp
+{% endif %}
+{# ipv6 configuration #}
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_FAILURE_FATAL=no
+IPV6_PEERROUTES=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+
