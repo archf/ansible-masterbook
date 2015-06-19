@@ -1,0 +1,54 @@
+# hostname convention
+
+* owner is specified explicitly when other than me
+* location is specified only when other than home?
+* unless '-lb-' is specified in the hostname, the server is a production machine
+
+sample string format:
+
+<owner>-location-<lb (if lb only)>-<3 letter acronym>[0-9]{2,3}>
+<owner>-location-<3 letter acronym>[0-9]{2,3}>
+
+available locations:
+  h: home
+  c: machine in cloud
+  v: vm or vps
+
+list of acronyms (by type of servers)
+
+web web server
+db db server
+lda ldap server
+px proxy server
+rpx reverse proxy server
+
+dn dns server
+dh dhcp server
+lb loadbalancer
+gw gateway
+fw firewall
+ir inner router
+sw switch
+
+lp linux printer
+ds docker server
+
+de desktop environnement
+ltp laptop
+
+bk backup server
+ftp ftp server
+nas file server
+is install server
+ss storage server
+san san server
+
+mx mail exchange
+mr mail relay
+
+ms monitoring server
+log syslog server
+
+cs chat server
+ps provisionning server
+
