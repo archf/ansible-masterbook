@@ -17,6 +17,8 @@ available locations:
 list of acronyms (by type of servers)
 
 web web server
+gs git server
+ws wiki server
 db db server
 lda ldap server
 px proxy server
@@ -25,22 +27,22 @@ rpx reverse proxy server
 dn dns server
 dh dhcp server
 lb loadbalancer
-gw gateway
 fw firewall
+gw gateway
 ir inner router
 sw switch
 
-lp linux printer
-ds docker server
-
 de desktop environnement
+des desktop server
+ds desktop server (desktop and server at the same time)
+wde windows desktop
 ltp laptop
+ss system server
 
 bk backup server
 ftp ftp server
-nas file server
 is install server
-ss storage server
+nas file server
 san san server
 
 mx mail exchange
@@ -51,4 +53,3 @@ log syslog server
 
 cs chat server
 ps provisionning server
-
