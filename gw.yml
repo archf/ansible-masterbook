@@ -1,16 +1,54 @@
 ---
 
-- hosts: all
+# remote user should be root only on the first run afterward, one can use an
+# admin account
+# on the cli, use "-u root"
+# remote_user: root
+
+- hosts: gw
   remote_user: root
-
   vars:
+    packages:
+      - 6rd
+      - zsh
+      - vim
+      - tmux
+      - git
+      - tcpdump
+      - nmap
+      - mtr
+      - rsync
+      - shadow
+      - sudo
+      - bind-dig
+      - python
+      - block-mount
+      - kmod-usb-storage
+      - kmod-fs-ext4
+      - curl
+      - wol
+      - etherwake
+      - less
+      - openssh-client
+      - openssh-server
 
+  tasks:
+  - name: update package list
+    command: opkg update
+
+  # - name: installing default packages
+  #   opkg: name={{ item }} state=present
+  #   with_items: packages
+
+- hosts: gw
+  remote_user: root
+  #external var file
   vars_files:
-  - assets/users/defaults.yml
-
+    - assets/users/defaults.yml
   roles:
-    - common
     - accounts
 
-    # not needed now
-    # - ntpd
+# # template (warning, this will disable the root login)
+# - name: template sshd_config
+#   copy: src=sshd_config dest=/etc/ssh/sshd_config owner=root group=root mode=0600 backup=yes
+

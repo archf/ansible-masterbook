@@ -1,32 +1,34 @@
 ### defaults for all ###
 Host *
   User {{ item.name }}
-  Port 22
   ForwardAgent no
-  ForwardX11 no
   ForwardX11Trusted yes
-  IdentityFile ~/.ssh/{{ item.name }}_{{ ansible_fqdn }}
+  IdentityFile ~/.ssh/{{ item.name }}_{{ ansible_hostname }}
   # enable multiplexing
   ControlPersist 10m
   ControlMaster auto
-  # ControlPath ~/.ssh/controlmasters/%r@%h:%p
+  ControlPath ~/.ssh/controlmasters/%r@%h:%p
 
 ### personal machines ###
 {% if item.name == 'archf' %}
 Host htpc
   ForwardX11 yes
+  ForwardAgent yes
   Hostname srv-htpc
 
 Host rhtpc
   Hostname malfeo.hopto.org
+  ForwardAgent yes
   Port 22222
 
 Host hgw
   Hostname OpenWrt
+  ForwardAgent yes
   User root
 
 Host rhgw
   Hostname OpenWrt
+  ForwardAgent yes
   User root
   Port 22222
 
@@ -35,21 +37,23 @@ Host rhgw
 Host bitbucket.org
   HostName bitbucket.org
   User git
+  ForwardAgent no
+  ForwardX11 no
   PreferredAuthentications publickey
 
 Host github.com
   Hostname github.com
   User git
+  ForwardAgent no
+  ForwardX11 no
   PreferredAuthentications publickey
 {% endif %}
 
-# cygwin ssh to local vm
-Host devbox
+# local vm
+Host dbox
   ForwardX11 yes
   Hostname localhost
-  User archambf
-  Port 22222
-  IdentityFile ~/.ssh/devbox
+  User archf
 
 ### vagrant machines ###
 
@@ -68,6 +72,9 @@ Host dev2 172.16.2.161 vagant@172.16.2.161 sdns
 ### vl machines ###
 
 {% if item.name == 'archambf' %}
+Host *.ip.vi* *.lb.vi* 10.247.*
+  User archambf
+
 Host as01
   Hostname 10.23.100.8
   User archambf

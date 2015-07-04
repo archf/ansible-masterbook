@@ -1,0 +1,36 @@
+# file: dev
+# inventory of developpement machines
+dbox
+# dbox ansible_ssh_user=archf ansible_connection=local ansibles_ssh_port=22222
+# dbox ansible_ssh_host=localhost ansible_connection=local ansibles_ssh_port=22222
+
+[devserver]
+# dbox ansible_ssh_host=localhost ansible_connection=local ansibles_ssh_port=22222
+
+
+[vagrantservers]
+vs01 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22223
+vs02 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22224
+vs03 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22225
+vs04 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22226
+vs05 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22227
+vs06 ansibles_ssh_user=vagrant ansible_connection=local ansibles_ssh_port=22228
+v-devbox ansible_ssh_host=172.16.2.160
+
+[vagrant-dns]
+mdns
+sdns
+
+[masterdns:chilren]
+mdns
+
+[slavedns:chilren]
+sdns
+
+[cachedns:chilren]
+cdns
+
+# grouve variables
+[vagrant-dns:vars]
+ansibles_ssh_user=vagrant
+

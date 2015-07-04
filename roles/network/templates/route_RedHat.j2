@@ -1,5 +1,11 @@
 {% for route in item.routes %}
+{{ route.cidr }} via {{ route.gw }} dev {{ item.device }}
+{% endfor %}
+
+{# gateway notation (keeped here just in case)
+{% for route in item.routes %}
 ADDRESS{{ loop.index0 }}={{ route.network }}
 NETMASK{{ loop.index0 }}={{ route.netmask }}
 GATEWAY{{ loop.index0 }}={{ route.gw }}
 {% endfor %}
+#}

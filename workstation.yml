@@ -1,0 +1,34 @@
+---
+
+  # one must sudo su to run as root on localhost from non-root that is why we
+  # need sudo
+- hosts: workstations
+  remote_user: root
+  sudo: yes
+  # by default i create my account on each remote machine
+  # use an external var file like so to override:
+  # vars_files:
+  #   - "{{ playbook_dir }}/assets/account_profiling/default.yml"
+  # roles:
+  #   - { role: accounts, accounts_profile: vl_account.yml }
+      # - accounts
+    # - { role: accounts, useraccountfiles: [ default.yml ]}
+
+  vars_files:
+  - assets/users/defaults.yml
+
+  roles:
+    - accounts
+
+- hosts: workstations
+  remote_user: archf
+  sudo: yes
+
+  roles:
+  - common
+  - workstation
+
+  # - network
+    # - dotfiles
+  tasks:
+    - include: task_lib/virtualbox_vl.yml

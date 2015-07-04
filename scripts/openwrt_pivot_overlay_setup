@@ -1,0 +1,35 @@
+#!/bin/ash
+
+# this scripts setups a vanilla openwrt install to use an extroot
+# (pivot-overlay)
+# this assumes a 2 partions usb key where:
+# /dev/sda1 -> swap
+# /dev/sda2 -> new overlay
+
+# install requirement to make use of a usb stick
+opkg update && opkg install kmod-usb-storage block-mount kmod-fs-ext4 sudo
+
+reboot
+
+# add more swap
+mkswap -L swapfs /dev/sda1
+swapon /dev/sda1
+
+# create a mountpoint and mount the usb share
+mount -t ext4 /dev/sda2 /mnt -o rw,
+
+# duplicate data
+tar -C /overlay -cvf - . | tar -C /mnt -xf -
+
+# edit fstab
+block detect > /etc/config/fstab
+
+# manually edit fstab
+# http://wiki.openwrt.org/doc/uci/fstab?s[]=fstab
+# http://wiki.openwrt.org/doc/howto/extroot
+
+# enable fstab (just to make sure)
+/etc/init.d/fstab enable
+
+# install python
+opkg update && opkg install python

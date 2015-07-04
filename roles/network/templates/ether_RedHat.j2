@@ -7,20 +7,22 @@ ONBOOT={{ item.onboot }}
 {# static configuration #}
 {% if item.bootproto == 'static' or item.bootproto == 'none' %}
 BOOTPROTO=none
-{% if item.ip is defined %}
-IPADDR={{ item.ip }}
-{% endif %}
-{% if item.netmask is defined %}
-NETMASK={{ item.netmask }}
-{% endif %}
 {% if item.gw is defined %}
 GATEWAY={{ item.gw }}
 {% endif %}
 {% if item.prefix is defined %}
 PREFIX={{ item.prefix }}
 {% endif %}
+{% if item.ip is defined %}
+IPADDR={{ item.ip }}
 {% endif %}
-{# dns for resolv.conf if peerdns is not defined or set to no #}
+{% for ip in item.ips if ip is defined %}
+IPADDR{{ loop.index0 }}={{ ip.ip }}
+PREFIX{{ loop.index0 }}={{ ip.prefix }}
+{% endfor %}
+{# dns for resolv.conf if peerdns is not defined or set to no
+This prevent network service from updating /etc/resolv.conf with the DNS
+servers received from a DHCP server. #}
 {% if item.peerdns is defined and item.peerdns == 'yes'  %}
 PEERDNS=yes
 {% if item.dns1 is defined %}
@@ -35,7 +37,8 @@ DNS3={{ item.dns3 }}
 {% else %}
 PEERDNS=no
 {% endif %}
-{# dynamic #}
+{% endif %}
+{# dynamic configuration #}
 {% if item.bootproto == 'dhcp' %}
 BOOTPROTO=dhcp
 {% endif %}

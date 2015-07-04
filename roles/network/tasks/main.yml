@@ -6,13 +6,11 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: ensure network packages are installed
-  sudo: yes
   action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=latest"
   with_items: packages
 
-  # not os specific
+  # this task works for all os
 - name: template the interface configuration file
-  sudo: yes
   template: src=ether_{{ ansible_os_family }}.j2 dest={{ netwrk_conf_path }}/ifcfg-{{ item.device }} mode=0622
   with_items: ifaces
   when: ifaces is defined
@@ -20,10 +18,10 @@
 
   # os specific
 - name: template the route configuration configuration file
-  sudo: yes
   template: src=route_{{ ansible_os_family }}.j2 dest={{ netwrk_conf_path }}/route-{{ item.device }} mode=0622
   with_items: ifaces
   when: ifaces is defined and item.routes is defined and ansible_os_family == 'RedHat'
+  register: changed_routes
 
 # - name: restart changed interfaces
 #   sudo: yes

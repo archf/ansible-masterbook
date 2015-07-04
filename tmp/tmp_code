@@ -29,11 +29,82 @@
 #        mode=600
 #   when: users.name == archf or users.name == archambf and not dotfiles_exists
 
-- debug: msg="{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}"
-  with_items: users
+# - debug: msg="{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}"
+#   with_items: users
 
 # - name: create a .ssh directory in each user account
 #   file: owner="{{ item.name }}" group="{{ item.name }}"
 #         path="/home/{{ item.name }}/.ssh" state=directory mode=700
 #   with_items: users
 #   when: system is not defined or system == no
+
+# - name: load external vars_files (accounts in defaults.yml by default)
+#   include_vars: "{{ USERS_DIR }}/defaults.yml"
+#   when: accounts_profile is not defined
+
+# - name: load external vars_files (override accounts in defaults.yml)
+#   include_vars: "{{ USERS_DIR }}/{{ accounts_profile }}"
+#   when: accounts_profile is defined
+
+# - include: "{{ playbook_dir }}/task_lib/load_users_vars.yml"
+
+
+
+#########################################################
+# concept of multiple keys per user abandonned for now
+# is is worth it?
+# #######################################################
+# - name: register public ssh keys of all node accounts
+#   shell: find /home -name *.pub | grep .ssh
+#   # | cut -d / -f 5
+#   register: node_ssh_public_keys
+
+# - name: build a list of already created extra_ssh_keys (this is to ensure idempotency)
+#   always_run: yes
+#   shell: if [ -d '/home' ] ; then find /home -path *.ssh* -name *.pub ; else find /export/home -path *.ssh* -name *.pub ; fi
+#   register: node_pub_ssh_keys
+
+# - debug: var=node_pub_ssh_keys
+# - pause:
+
+# - name: register public ssh keys of all managed and unmanaged accounts
+#   always_run: yes
+#   shell: if [ -z find "{{ item.0.home | default('/home/' + item.0.name) ~ '/..' }}" -name *.pub | grep .ssh
+#   # shell: find "{{ item.0.home | default('/home/' + item.0.name) ~ '/..' }}"
+#   # if [ -d '.sa' ] ; then find . -path *.ssh* -name *.pub ; else find . -path *assets* -name *.pub ; fi
+#   register: pub_ssh_keys
+# | cut -d / -f 5
+
+# - name: generate extra ssh key pairs to access public services
+#   script: gen_ssh_key.sh -d {{ item.0.home | default('/home/' + item.0.name) }} -k {{ item.0.name }}_{{ item.1 }}_{{ ansible_fqdn }}
+#   with_subelements:
+#   - users
+#   - extra_ssh_keys
+#   when: system is not defined or system == no
+  # when: item.0.system is not defined or item.0.system == no
+
+  # when: node_pub_ssh_keys.stdout_lines.find('*{{ item.1 }}*') == -1
+
+# # this to avoid fetching keys of unmanaged accounts
+# - name: register public ssh keys of all managed accounts (to fetch them)
+#   always_run: yes
+#   shell: find "{{ item.home | default('/home/' + item.name) }}" -path "*.ssh*" -name *.pub
+#   # shell: find "{{ item.0.home | default('/home/' + item.0.name) ~ '/..' }}"
+#   # if [ -d '.sa' ] ; then find . -path *.ssh* -name *.pub ; else find . -path *assets* -name *.pub ; fi
+#   with_items: users
+#   register: pub_ssh_keys
+
+# - name: fetch the ssh public keys of every account to control machine
+#   fetch: src="{{ item }}" dest="{{ ASSETS_DIR }}/public_keys/" flat=yes
+#   with_subelements:
+#     - pub_ssh_keys.results
+#     - stdout_lines
+
+    # with_items: pub_ssh_keys.stdout_lines
+# - debug: var=pub_ssh_keys
+
+# - name: fetch the ssh public keys of every account to control machine
+#   fetch: src="{{ item }}" dest="{{ ASSETS_DIR }}/public_keys/" flat=yes
+
+
+# - debug: var="{{ playbook_dir }}"

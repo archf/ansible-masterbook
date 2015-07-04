@@ -7,7 +7,6 @@
 # root' to be able to create the first non root account from wich one can work
 # another option is to run it against an account with administrator privilege.
 
-
 #  Fixme: add multiple groups from list
 # # group: name="{{ item.groups }}" state="{{ item.state | default('present') }}" system="{{ item.system | default('no') }}"
 # - name: adding default groups that should always be present (for users to be part of)
@@ -40,12 +39,14 @@
     shell: "{{ item.shell | default('/bin/bash') }}"
     system: "{{ item.system | default('no') }}"
     # ssh defaults (a key is generated in each accounts)
-    generate_ssh_key: yes
+    generate_ssh_key: "{{ item.gen_ssh_key | default('yes') }}"
+    ssh_key_passphrase: "{{ item.ssh_key_passphrase | default('q1w2e3') }}"
     ssh_key_type: rsa
     ssh_key_bits: 2048
-    ssh_key_file: ".ssh/{{ item.name }}_{{ ansible_fqdn }}"
+    ssh_key_file: ".ssh/{{ item.name }}_{{ ansible_hostname }}"
     update_password: "{{ item.update_password | default('on_create') }}"
   with_items: users
+  when: item.name != 'root'
 
   # taken literaly from the ansible manual
 - name: Install public ssh keys for each users (for remote management)
@@ -55,7 +56,7 @@
   - authorized
 
 - name: fetch the ssh public keys of every account to control machine
-  fetch: src="{{ item.home | default('/home/' + item.name) }}/.ssh/{{ item.name }}_{{ ansible_fqdn }}.pub" dest="{{ ASSETS_DIR }}/public_keys/" flat=yes
+  fetch: src="{{ item.home | default('/home/' + item.name) }}/.ssh/{{ item.name }}_{{ ansible_hostname }}.pub" dest="{{ ASSETS_DIR }}/public_keys/" flat=yes
   with_items: users
 
 - name: template a ~/.ssh/config in each user account

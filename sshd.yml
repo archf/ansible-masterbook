@@ -1,0 +1,11 @@
+---
+# this playbook will ensure openssh client and server is installed on every
+# machines and configure openssh-server appropriatly
+- hosts: all
+  sudo: yes
+  vars:
+    packages:
+      - openssh-server
+      - openssh-client
+  roles:
+    - openssh
