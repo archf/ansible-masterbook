@@ -6,9 +6,10 @@ packages:
   - zsh
   - vim
   - tmux
-  - tcpdump
   - git
+  - tcpdump
   - nmap
+  - mtr
   - rsync
   - shadow
   - sudo
@@ -17,3 +18,7 @@ packages:
   - block-mount
   - kmod-usb-storage
   - kmod-fs-ext4
+  - curl
+  - wol
+  - etherwake
+  - less

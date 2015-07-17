@@ -1,54 +1,29 @@
 ---
 # a playbook to apply on self (i.e update your workstation)
-- hosts: localhost
-  connection: local
+# it should be used with a stub inventory
+- hosts: all
+  # connection: local
   # one must sudo su to run as root on localhost from non-root
   remote_user: root
   sudo: yes
 
-  vars:
-    USERS_DIR: "{{ playbook_dir }}/assets/users"
-    # users:
-    # - name: archf
-    #   append: yes
-    #   password: 'admin'
-    #   comments: 'Felix Archambault'
-    #   ssh_keys:
-    #     - "{{ USERS_DIR }}/public_keys/laptop.pub"
-    #     - "{{ USERS_DIR }}/public_keys/desktop.pub"
-    #     - "{{ USERS_DIR }}/public_keys/vl.pub"
-    #     # - "{{ playbook_dir }}/assets/users/public_keys/laptop.pub"
-    #     # - "{{ playbook_dir }}/assets/users/public_keys/desktop.pub"
-    #     # - "{{ playbook_dir }}/assets/users/public_keys/vl.pub"
-    #   dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
-    #   dotfiles_https: 'https://archambf@bitbucket.org/archambf/dotfiles.git'
-    #   extra_ssh_keys:
-    #     - github
-    #     - bitbucket
-    #   # state: absent
-    #   # remove: yes
-    # - name: user1
-    #   append: yes
-    #   password: 'admin'
-    #   comments: 'this is user 1'
-    # - name: user2
-    #   append: yes
-    #   password: 'admin'
-    #   comments: 'this is user 2'
-  # by default i create my account on each remote machine
-  # use an external var file like so to override:
+  # use an external var file like so to load variables:
   vars_files:
   - assets/users/defaults.yml
   # - "{{ playbook_dir }}/assets/users/defaults.yml"
-    # - "{{ playbook_dir }}/assets/account_profiling/default.yml"
-
 
   roles:
   - accounts
-    # - common
-    # - { role: accounts, useraccountfiles: [ default.yml ]}
+  - common
+  # - ansiblecm
+  # - collectd
+  # - docker
+  # - network
+  # - fail2ban
 
+  tasks:
+    - include: task_lib/virtualbox_vl.yml
   # roles:
   #   - common
   #   - dotfiles
-  #   - devstation
+  #   - workstation

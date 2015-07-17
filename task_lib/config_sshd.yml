@@ -2,6 +2,5 @@
 
 # sshd configuration
 
-  -name: permit ssh root login
-    lineinfile: dest=/etc/ssh/sshd_config backup=yes regexp='^#PermitRootLogin' line='PermitRootLogin yes'
-
+- name: permit ssh root login
+  lineinfile: dest=/etc/ssh/sshd_config backup=yes regexp='^#PermitRootLogin' line='PermitRootLogin yes'

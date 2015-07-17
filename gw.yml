@@ -3,10 +3,19 @@
 # remote user should be root only on the first run afterward, one can use an
 # admin account
 # on the cli, use "-u root"
+
+# note: openssh is installed, enabled and started. you should therefore
+# connect on a dropbear instance running on port != 22
+# -e ansible_ssh_port=22222
 # remote_user: root
 
-- hosts: gw
+- hosts: all
   remote_user: root
+  gather_facts: no
+  vars_files:
+    - assets/users/openwrt.yml
+    # user account configuration
+
   vars:
     packages:
       - 6rd
@@ -26,29 +35,37 @@
       - kmod-usb-storage
       - kmod-fs-ext4
       - curl
+      - wget
       - wol
       - etherwake
       - less
+      - zsh
       - openssh-client
       - openssh-server
+      - openssh-keygen
+      - openssh-sftp-server
+      - openssh-client-utils
 
-  tasks:
-  - name: update package list
-    command: opkg update
+  # tasks:
+  #   - name: installing default packages
+  #     opkg: name={{ item }} state=present update_cache=true
+  #     with_items: packages
 
-  # - name: installing default packages
-  #   opkg: name={{ item }} state=present
-  #   with_items: packages
+    # - name: enable and start sshd
+    #   raw: /etc/init.d/sshd enable && /etc/init.d/sshd start
 
-- hosts: gw
-  remote_user: root
-  #external var file
-  vars_files:
-    - assets/users/defaults.yml
   roles:
-    - accounts
+    - openwrt
+    # - accounts
+
+# - hosts: gw
+#   remote_user: root
+#   # remote_user: archf
+#   gather_facts: no
+#   # external var file
+#   roles:
+#     - openwrt
 
 # # template (warning, this will disable the root login)
 # - name: template sshd_config
 #   copy: src=sshd_config dest=/etc/ssh/sshd_config owner=root group=root mode=0600 backup=yes
-

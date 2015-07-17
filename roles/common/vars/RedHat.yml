@@ -24,3 +24,4 @@ packages:
   - vim-X11
   - zsh
   - sshpass
+  - urlview

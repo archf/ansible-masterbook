@@ -3,6 +3,8 @@
 ## list of roles
 
 * common: install default package on every machines
+  * fail2ban
+  * ntp
 * accounts: create accounts on any machine (requires root)
 * devbox: install dev package (this could be splitted)
             * python
@@ -27,7 +29,7 @@ remove_accounts: ad-hoc task to remove users and groups loaded from vars_files
                   on all machines
 
 ### roles to create
-* fail2ban
+* remote-desktop
 * ansible: install and configure ansible
 * postgress
 * powerdns-recursor
@@ -47,7 +49,7 @@ remove_accounts: ad-hoc task to remove users and groups loaded from vars_files
 * suspend_ram: cronjob to suspend machine to ram
 
 ### other tasks
-*  configure sshd (PermitRootLogin)
+*  configure sshd (PermitRootLogin)?
 *  ntp
 *  fqdn
 *  disk partionning (lvm)

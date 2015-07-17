@@ -33,3 +33,11 @@ block detect > /etc/config/fstab
 
 # install python
 opkg update && opkg install python
+
+cd
+opkg install openssh-server openssh-client openssh-client-utils openssh-sftp-server
+/etc/init.d/sshd enable
+/etc/init.d/sshd start
+
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py

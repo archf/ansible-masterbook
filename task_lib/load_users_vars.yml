@@ -7,7 +7,7 @@
   # vars_files:
   #   - /vars/external_vars.yml
 
-  - name: load external vars_files (use accounts in defaults.yml by default)
+- name: load external vars_files (use accounts in defaults.yml by default)
   include_vars: "{{ USERS_DIR }}/defaults.yml"
   when: accounts_profile is not defined
 
