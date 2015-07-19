@@ -1,0 +1,14 @@
+ifaces:
+- device: enp0s3
+  bootproto: none
+  ip: 10.0.2.150
+  netmask: 255.255.255.0
+  gw: 10.0.2.1
+  ns:
+    - 10.0.2.1
+  routes:
+    - network: 10.247.0.0
+      netmask: 255.255.0.0
+      gw: 10.0.2.1
+# - device: enp0s8
+

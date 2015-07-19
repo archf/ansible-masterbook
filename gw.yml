@@ -9,9 +9,10 @@
 # -e ansible_ssh_port=22222
 # remote_user: root
 
-- hosts: all
+- hosts: gw
   remote_user: root
-  gather_facts: no
+  # remote_user: root
+  gather_facts: yes
   vars_files:
     - assets/users/openwrt.yml
     # user account configuration
@@ -55,8 +56,8 @@
     #   raw: /etc/init.d/sshd enable && /etc/init.d/sshd start
 
   roles:
+    - accounts
     - openwrt
-    # - accounts
 
 # - hosts: gw
 #   remote_user: root
