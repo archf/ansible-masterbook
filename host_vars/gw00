@@ -12,6 +12,9 @@ ntp_servers:
   - ntp1.torix.ca
   - ntp3.torix.ca
 
+# system.@system[0].zonename
+timezone: America/Montreal
+
 # wireless.radioN
 wireless:
   radio0:
