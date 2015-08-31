@@ -6,6 +6,10 @@ ntpconf:
   enabled: 1
   enable_server: 1
 
+# uci: command=set key="dropbear.@dropbear[0]
+dropbear:
+  port: 22222
+
 ntp_servers:
   - resolver1.level3.net
   - alpha.codatory.net
@@ -67,4 +71,4 @@ forwarders:
   - 8.8.8.8
   - 8.8.4.4
 
-# firewall:
+firewall: []

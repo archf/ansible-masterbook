@@ -9,6 +9,8 @@
 # install requirement to make use of a usb stick
 opkg update && opkg install kmod-usb-storage block-mount kmod-fs-ext4 sudo
 
+# the reboot seems necessary to apply the previous packages,
+# maybe insmod would do it
 reboot
 
 # add more swap
@@ -39,5 +41,15 @@ opkg install openssh-server openssh-client openssh-client-utils openssh-sftp-ser
 /etc/init.d/sshd enable
 /etc/init.d/sshd start
 
-wget https://bootstrap.pypa.io/get-pip.py
+wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
+chmod +x get-pip.py
 python get-pip.py
+
+# Configuring block-mount.
+# this file has been obseleted. please call "/sbin/block mount" directly
+# block: /dev/mtdblock3 is already mounted
+# Configuring kmod-fs-ext4.
+# Configuring sudo.
+# Collected errors:
+#  * resolve_conffiles: Existing conffile /etc/sudoers is different from the conffile in the new package. The new conffile will be placed at /etc/sudoers-opkg.
+

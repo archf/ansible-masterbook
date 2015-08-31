@@ -6,7 +6,7 @@
 
 # Ansible transports arguments to modules in a file. The
 # path to the arguments file is in $1, and the file
-# contains the module's arguments like this:
+# contains the module's arguments like inn this example:
 #
 #       name="name" value=15 dest=/tmp/destfile
 #
@@ -16,8 +16,6 @@
 
 # parameters are command, key, value
 source ${1}
-
-# cat ${1}
 
 # validate arguments
 if [ -z "$command" ]; then
@@ -34,15 +32,6 @@ if [ -z "$value" ]; then
         echo 'failed=True msg="Module needs value=argument"'
         exit 0;
 fi
-
-# test if we need to apply a change
-# if [ $command == 'set' ]; then
-#   [ $(uci get "${key}") = "${value}" ]
-#   changed=$?
-# elif [ $command == 'add_list' ]; then
-#   uci get "$key" 2>/dev/null |grep -q "$value"
-#   changed=$?
-# fi
 
 case $command in
     'set')

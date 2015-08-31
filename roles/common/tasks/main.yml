@@ -8,13 +8,21 @@
 
 - name: upgrade all packages
   action: "{{ ansible_pkg_mgr }} pkg=* state=latest"
+  when: ansible_distribution != "OpenWrt"
 
 - name: installing default packages
   action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=latest"
   with_items: packages
+  when: ansible_distribution != "OpenWrt"
+
+- name: installing default packages on an openwrt system
+  opkg: name={{ item }} state=present update_cache=true
+  with_items: packages
+  when: ansible_distribution == "OpenWrt"
 
 - name: disable selinux for now
   selinux: state=disabled
+  when: ansible_distribution != "OpenWrt"
 
 - name: template jail2ban jail.local configuration file
   template: src=jail.local.j2 dest=/etc/fail2ban/jail.local group=root owner=root mode=0644 backup=yes
