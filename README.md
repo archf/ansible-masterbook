@@ -5,11 +5,11 @@
 Install git and ansible on the control machine:
 ```bash
 # Debian
-apt-get -y install ansible sudo
+apt-get -y install git ansible sudo
 # rhel
-sudo yum -y install ansible sudo
+sudo yum -y install git ansible sudo
 # or
-dnf install -y install ansible sudo
+dnf install -y git ansible sudo
 ```
 ## list of quite stable roles
 
