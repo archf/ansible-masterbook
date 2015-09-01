@@ -53,6 +53,7 @@ todo soon:
   * exim: https://galaxy.ansible.com/list#/roles/4842
   * grafana: https://github.com/azavea/ansible-grafana
   * influxdb:
+  - samba
 
 ## Todo:
 
@@ -62,19 +63,23 @@ todo soon:
 * postgress
 * powerdns-recursor
 * powerdns-authoritative
-* cobbler
 * collectd or python-diammond
 * influx-db
 * graphite or graphana
 * kodi
-* wiki
+* wikia
 * shinken or nagios
 * vagrant - install vagrant from website
 * ldap
 * redmine
-* suspend_ram: cronjob to suspend machine to ram
+* cobbler
+    - make a special  case to install to openwrt from source
 
 * multimedia: install music or video package
+    - vlc
+    - asunder
+    - easytag
+
 * pythondev:
 * golangdev:
 * rustdev:
@@ -92,7 +97,9 @@ todo soon:
 *  tmpfs (mount /tmp in a tmpfs when there is enough ram ??? i think this doesn't allow
     you to suspend to ram)
 
-### somes roles should be executed on all machines by default
+# Thoughts
+
+## Some roles should be executed on all machines by default
 ex:
 * common
 * accounts
@@ -100,3 +107,4 @@ ex:
 * shinken or nagios
 * backup: install backup scripts
 * collectd or python-diammond
+* suspend_ram: cronjob to suspend machine to ram

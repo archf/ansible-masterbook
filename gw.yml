@@ -46,6 +46,8 @@
       - openssh-keygen
       - openssh-sftp-server
       - openssh-client-utils
+      - make
+      - python-devel
 
   # tasks:
   #   - name: installing default packages
@@ -58,6 +60,10 @@
   roles:
     - accounts
     - openwrt
+
+  # tasks:
+  #   - name: install cobbler from git checkout
+  #     git:
 
 # - hosts: gw
 #   remote_user: root
