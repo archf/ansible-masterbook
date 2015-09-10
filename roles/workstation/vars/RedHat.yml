@@ -8,3 +8,6 @@ packages:
   - inotify-tools-devel
   - pandoc
   - urlview
+  - workrave
+  - pidgin
+  - the_silver_searcher

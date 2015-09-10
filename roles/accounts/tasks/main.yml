@@ -1,21 +1,15 @@
 ---
-### this role absolutely needs an external vars_files
-# alternatly you could add defaults in 'vars/main.yml' but this could
+### this role absolutely needs an external vars_files or variables defined
+# inside the playbook. Alternatly you could add defaults in 'vars/main.yml' but this could
 # result with sensitive informations inside the role
 
 #NOTE: to bootstrap properly one should invoke this role with 'remote_user:
 # root' to be able to create the first non root account from wich one can work
 # another option is to run it against an account with administrator privilege.
 
-#  Fixme: add multiple groups from list
-# # group: name="{{ item.groups }}" state="{{ item.state | default('present') }}" system="{{ item.system | default('no') }}"
-# - name: adding default groups that should always be present (for users to be part of)
-#   group: name="{{ item }}" system=yes
-#   with_subelements:
-#     - users
-#     - groups
-  # when: groups is defined
-  # with_items: users
+- name: adding unexisting groups on target machines
+  group: name={{ item }} state=present
+  with_items: req_groups
 
 # somehow this task does not work well to remove users and therefore
 # one should use it to remove users

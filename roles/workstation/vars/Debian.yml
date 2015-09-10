@@ -8,3 +8,7 @@ packages:
   - python-pip
   - libinotifytools-dev
   - pandoc
+  - urlview
+  - workrave
+  - pidgin
+  - the_silver_searcher

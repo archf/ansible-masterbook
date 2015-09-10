@@ -25,3 +25,4 @@ packages:
   - zsh
   - sshpass
   - urlview
+  - rxvt-unicode-256color

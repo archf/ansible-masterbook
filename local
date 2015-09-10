@@ -13,4 +13,3 @@ nas00 ansible_ssh_host=localhost ansible_connection=local
 
 [workstations]
 localhost ansible_ssh_host=localhost ansible_connection=local
-

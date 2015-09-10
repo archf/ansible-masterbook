@@ -4,7 +4,7 @@
   # need sudo
 - hosts: workstations
   remote_user: root
-  sudo: yes
+  become: yes
   # by default i create my account on each remote machine
   # use an external var file like so to override:
   # vars_files:
@@ -22,10 +22,11 @@
 
 - hosts: workstations
   remote_user: archf
-  sudo: yes
+  become: yes
 
   roles:
   - common
+  - synergy
   - workstation
 
   # - network

@@ -5,7 +5,7 @@
 # define an empty list
 users:
   - name: archf
-    groups: 'adm,wheel,lp,users'
+    groups: 'adm,wheel,lp,users,synergy'
     append: yes
     password: 'admin'
     update_password: on_create
@@ -32,6 +32,8 @@ users:
   #   system: yes
   #   authorized: []
 
+req_groups:
+  - synergy
 ### template
 
 # users: []
