@@ -12,3 +12,4 @@ packages:
   - workrave
   - pidgin
   - the_silver_searcher
+  - keychain
