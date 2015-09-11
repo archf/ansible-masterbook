@@ -56,7 +56,7 @@
   when: ansible_distribution != "OpenWrt"
 
 - name: create a .ssh directory in each user account
-  file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/.ssh' }}" state=directory mode=600
+  file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/.ssh' }}" state=directory mode=700
   with_items: users
   when: item.dotfiles_ssh is defined or item.system is not defined
 

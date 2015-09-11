@@ -13,3 +13,4 @@ packages:
   - pidgin
   - the_silver_searcher
   - keychain
+  - xsel
