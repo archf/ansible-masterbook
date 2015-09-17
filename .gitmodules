@@ -1,0 +1,12 @@
+[submodule "fail2ban"]
+	path = fail2ban
+	url = git@github.com:archf/fail2ban.git
+[submodule "roles/fail2ban"]
+	path = roles/fail2ban
+	url = git@github.com:archf/fail2ban.git
+[submodule "roles/synergy"]
+	path = roles/synergy
+	url = git@github.com:archf/synergy.git
+[submodule "roles/docker"]
+	path = roles/docker
+	url = git@github.com:archf/docker.git
