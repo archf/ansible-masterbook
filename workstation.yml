@@ -28,6 +28,7 @@
   - common
   - synergy
   - workstation
+  - docker
 
   # - network
     # - dotfiles

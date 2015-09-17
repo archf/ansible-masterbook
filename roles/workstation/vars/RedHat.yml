@@ -1,15 +1,17 @@
 ---
-# packager: yum
+# packager: yum or dnf
 packages:
   - python3-ipython
   - python3-ipdb
   - python3-devel
   - python-pip
   - inotify-tools-devel
-  - pandoc
   - urlview
   - workrave
   - pidgin
   - the_silver_searcher
   - keychain
   - xsel
+  - pandoc
+  - ctags
+  - httrack

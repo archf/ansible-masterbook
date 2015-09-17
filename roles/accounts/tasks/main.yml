@@ -60,6 +60,11 @@
   with_items: users
   when: item.dotfiles_ssh is defined or item.system is not defined
 
+- name: create a .ssh/controlmasters directory in each user account
+  file: owner="{{ item.name }}" group="{{ item.name }}" path="{{ item.home | default('/home/' + item.name) ~ '/.ssh/controlmasters' }}" state=directory mode=700
+  with_items: users
+  when: item.dotfiles_ssh is defined or item.system is not defined
+
 - name: template a ~/.ssh/config in each user account
   template: src=ssh.config.j2 dest="{{ item.home | default('/home/' + item.name) ~ '/.ssh/config' }}" owner="{{ item.name }}" group="{{ item.name }}" mode=0600
   with_items: users
