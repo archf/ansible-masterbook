@@ -27,8 +27,5 @@
 #- name: install fail2ban from local tarball on an OpenWrt system
 #  unarchive: src=fail2ban-0.fail2ban-0.9.1.tar.gz dest=/opt/
 
-#- name: template jail2ban jail.local configuration file
-#  template: src=jail.local.j2 dest=/etc/fail2ban/jail.local group=root owner=root mode=0644 backup=yes
-#
 #- name: configure fail2ban service to start on boot and to now be running
 #  service: name=fail2ban state=started enabled=true
