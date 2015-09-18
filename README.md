@@ -9,7 +9,7 @@ apt-get -y install git ansible sudo
 # rhel
 sudo yum -y install git ansible sudo
 # or
-dnf install -y git ansible sudo
+sudo dnf install -y git ansible sudo
 ```
 ## list of quite stable roles
 

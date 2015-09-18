@@ -10,3 +10,6 @@
 [submodule "roles/docker"]
 	path = roles/docker
 	url = git@github.com:archf/docker.git
+[submodule "roles/resolv"]
+	path = roles/resolv
+	url = git@github.com:archf/ansible_resolv.git
