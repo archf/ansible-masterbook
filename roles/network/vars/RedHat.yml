@@ -1,8 +1,0 @@
----
-
-packages:
-  - libselinux-python
-  - bridge-utils
-  - iputils
-
-netwrk_conf_path: "/etc/sysconfig/network-scripts"
