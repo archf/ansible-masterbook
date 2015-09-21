@@ -5,15 +5,13 @@
 - hosts: workstations
   remote_user: root
   become: yes
-  # vars_files:
-  #   - "{{ playbook_dir }}/assets/account_profiling/default.yml"
   # roles:
   #   - { role: accounts, accounts_profile: vl_account.yml }
       # - accounts
     # - { role: accounts, useraccountfiles: [ default.yml ]}
 
   vars_files:
-  - "{{ playbook_dir }}/{{ private_dir }}/users/users.yml"
+    - private/users/accounts.yml
 
   roles:
     - accounts
