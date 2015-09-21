@@ -13,3 +13,6 @@
 [submodule "roles/resolv"]
 	path = roles/resolv
 	url = git@github.com:archf/ansible_resolv.git
+[submodule "roles/accounts"]
+	path = roles/accounts
+	url = git@github.com:archf/accounts.git

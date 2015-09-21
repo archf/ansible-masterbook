@@ -5,8 +5,6 @@
 - hosts: workstations
   remote_user: root
   become: yes
-  # by default i create my account on each remote machine
-  # use an external var file like so to override:
   # vars_files:
   #   - "{{ playbook_dir }}/assets/account_profiling/default.yml"
   # roles:
@@ -15,7 +13,7 @@
     # - { role: accounts, useraccountfiles: [ default.yml ]}
 
   vars_files:
-  - assets/users/defaults.yml
+  - "{{ playbook_dir }}/{{ private_dir }}/users/users.yml"
 
   roles:
     - accounts
