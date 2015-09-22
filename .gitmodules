@@ -16,3 +16,6 @@
 [submodule "roles/workstation"]
 	path = roles/workstation
 	url = git@github.com:archf/workstation.git
+[submodule "roles/common"]
+	path = roles/common
+	url = git@github.com:archf/common.git
