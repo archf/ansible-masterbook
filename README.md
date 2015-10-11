@@ -3,14 +3,23 @@
 # Prerequisite
 
 Install git and ansible on the control machine:
+
+Via script:
+```bash
+curl -s https://raw.githubusercontent.com/archf/ansible-masterbook/master/ansible-bootstrap.sh | sh
+```
+
+Or manually:
+
 ```bash
 # Debian
-apt-get -y install git ansible sudo
+apt-get -y install git ansible
 # rhel
-sudo yum -y install git ansible sudo
+sudo yum -y install git ansible
 # or
-sudo dnf install -y git ansible sudo
+sudo dnf install -y git ansible
 ```
+
 ## list of quite stable roles
 
 * common: install default package on every machines
