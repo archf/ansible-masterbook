@@ -1,18 +1,9 @@
 ---
 
-  # one must sudo su to run as root on localhost from non-root that is why we
-  # need sudo
+  # one must sudo su to run as root on localhost from non-root that hence the
+  # need for become
 - hosts: workstations
-  remote_user: root
   become: yes
-  # roles:
-  #   - { role: accounts, accounts_profile: vl_account.yml }
-      # - accounts
-    # - { role: accounts, useraccountfiles: [ default.yml ]}
-
-  vars_files:
-    - private/users/accounts.yml
-
   roles:
     - accounts
 
@@ -22,11 +13,13 @@
 
   roles:
   - common
-  - synergy
   - workstation
-  - docker
+  - fail2ban
+  # - synergy
 
   # - network
     # - dotfiles
+
+  # add user to vboxsf (to mount shares inside vm)
   tasks:
     - include: task_lib/virtualbox_vl.yml
