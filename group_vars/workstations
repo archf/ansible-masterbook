@@ -1,0 +1,50 @@
+---
+
+### by default i create my account on each remote machine
+# NOTE: ansible fails when lists are undefined. The current workaround is to
+# define an empty list
+users:
+  - name: archf
+    groups: 'adm,lp,users'
+    append: yes
+    password: 'admin'
+    update_password: on_create
+    comments: 'Felix Archambault'
+    shell: "/bin/zsh"
+    gen_ssh_key: yes
+    authorized:
+      - "{{ private_dir }}/public_keys/archf_ds00.pub"
+      # - "{{ private_dir }}/public_keys/archambf_vl.pub"
+      # - "{{ private_dir }}/public_keys/archf_lb-dev04.pub"
+    # should this be in a host var or group var (on a per group or machine basis)
+    # keys to remote access the target
+    # authorized:
+    # optional stuff (ansible will not fail if omitted)
+    # user_ssh_username: ''
+    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
+    ssh_config:
+      - Host: bitbucket.org
+        User: git
+        ForwardAgent: yes
+        ForwardX11: no
+        PreferredAuthentications: publickey
+        ControlMaster: no
+      - Host: github.com
+        User: git
+        ForwardAgent: yes
+        ForwardX11: no
+        PreferredAuthentications: publickey
+        ControlMaster: no
+      - Host: '*htpc'
+        Hostname: srv-htpc.lan
+        User: archambf
+        ForwardX11: yes
+        ForwardAgent: yes
+      - Host: hgw
+        ForwardAgent: yes
+        User: root
+        Port: 22222
+      - Host: rhgw
+        Hostname: gw00
+        User: root
+        Port: 22222
