@@ -19,3 +19,9 @@
 [submodule "roles/common"]
 	path = roles/common
 	url = git@github.com:archf/common.git
+[submodule "roles/openssh-server"]
+	path = roles/openssh-server
+	url = git@github.com:archf/openssh.git
+[submodule "roles/samba"]
+	path = roles/samba
+	url = git@github.com:archf/ansible-samba.git

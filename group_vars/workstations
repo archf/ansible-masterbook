@@ -48,3 +48,15 @@ users:
         Hostname: gw00
         User: root
         Port: 22222
+
+# note: path to mount point
+mounts:
+  - src: '/dev/mapper/data_vg-home_lv'
+    name: '/media/home_lv'
+    state: mounted
+    fstype: ext4
+    opts: 'defaults,acl'
+    group: users
+
+apt_repos:
+  - 'ppa:x2go/stable'
