@@ -1,0 +1,46 @@
+# multipurpose share to test staging configurations
+
+# vi: set ft=ruby
+
+ROLE_NAME = 'staging'
+VAGRANTFILE_API_VERSION = '2'
+
+hosts = [
+  { name: 'm2', ip: '192.168.56.112', net: 'private_network', box: "ubuntu/trusty64" }
+  # { name: 'm1', ip: '192.168.56.111', net: 'private_network', box: "bento/fedora-22" },
+]
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true     # hook to Vagrant up and vagrant destroy
+    config.hostmanager.manage_host = true # allow /etc/hosts file updating
+    config.hostmanager.ignore_private_ip = false # disable using the private network IP address
+    config.hostmanager.include_offline = true # include box that are up or boxes with private IP
+  end
+
+  # config loop to bring up all the machines and provision only once they are
+  N=hosts.length
+
+  (1..N).each do |machine_id|
+
+    config.vm.define ROLE_NAME + "-m#{machine_id}" do |node|
+      node.vm.box = hosts[machine_id -1][:box]
+      node.vm.hostname = ROLE_NAME + '-' + hosts[machine_id - 1][:name]
+      node.vm.network hosts[machine_id -1 ][:net], ip: hosts[machine_id - 1][:ip]
+
+      if machine_id == N
+        # provisionnning loop
+        node.vm.provision 'ansible' do |ansible|
+
+          # run the provisionner
+          # ansible.verbose = 'v'
+          ansible.limit = 'all'
+          ansible.playbook = 'common.yml'
+
+        end #ansible vm.provision
+
+      end # machine_id if node.vm
+    end
+  end # each loop
+end #vagrant.configure

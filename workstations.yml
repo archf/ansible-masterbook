@@ -1,25 +1,12 @@
 ---
 
-  # one must sudo su to run as root on localhost from non-root that hence the
-  # need for become
 - hosts: workstations
   become: yes
-  roles:
-    - accounts
 
-- hosts: workstations
-  remote_user: archf
-  become: yes
+  include: common.yml
 
   roles:
-  - common
   - workstation
-  - fail2ban
   # - synergy
 
-  # - network
-    # - dotfiles
-
-  # add user to vboxsf (to mount shares inside vm)
-  tasks:
-    - include: task_lib/virtualbox_vl.yml
+  # NOTE: Synergy .rpm or .deb must be placed inside roles/synergy/files

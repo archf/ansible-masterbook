@@ -1,7 +1,7 @@
 ---
 # special tasks when provisionning a virtualbox vm
 - name: append user to vboxsf group to enable vbox share automounting
-  sudo: yes
+  become: yes
   command: usermod -a -G vboxsf archf
   when: ansible_virtualization_type == "virtualbox"
 

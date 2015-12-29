@@ -42,6 +42,10 @@ sudo dnf install -y git ansible
     - pandoc
     - urlview
 
+* workstation
+* openssh: template sshd-config
+- samba
+
 wip:
   * backup
   * docker
@@ -49,8 +53,6 @@ wip:
   * ansiblecm: install and configure an ansible control machine
   * network: configure nic on a target
   * openWrt
-  * workstation
-  * openssh: template sshd-config
   * multimedia: install multimedia packages
 
 todo soon:
@@ -62,7 +64,6 @@ todo soon:
   * exim: https://galaxy.ansible.com/list#/roles/4842
   * grafana: https://github.com/azavea/ansible-grafana
   * influxdb:
-  - samba
 
 ## Todo:
 

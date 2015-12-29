@@ -1,0 +1,14 @@
+---
+
+  # one must sudo su to run as root on localhost from non-root that hence the
+  # need for become
+- hosts: all
+  become: yes
+  roles:
+    - accounts
+    - common
+    - fail2ban
+
+  # add user to vboxsf (to mount shares inside vm)
+  tasks:
+    - include: task_lib/virtualbox_vl.yml
