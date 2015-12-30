@@ -25,3 +25,9 @@
 [submodule "roles/samba"]
 	path = roles/samba
 	url = git@github.com:archf/ansible-samba.git
+[submodule "roles/lxc"]
+	path = roles/lxc
+	url = git@github.com:archf/ansible-lxc.git
+[submodule "roles/lxcm"]
+	path = roles/lxcm
+	url = git@github.com:archf/ansible-lxcm.git
