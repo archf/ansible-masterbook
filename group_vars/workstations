@@ -12,42 +12,52 @@ users:
     comments: 'Felix Archambault'
     shell: "/bin/zsh"
     gen_ssh_key: yes
+    dotfiles_src_path: "/home/archf/dotfiles"
+    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
+    omzsh_src_path: "/home/archf/.oh-my-zsh"
+    vimdir_src_path: "/home/archf/.vim"
     authorized:
       - "{{ private_dir }}/public_keys/archf_ds00.pub"
-      # - "{{ private_dir }}/public_keys/archambf_vl.pub"
-      # - "{{ private_dir }}/public_keys/archf_lb-dev04.pub"
-    # should this be in a host var or group var (on a per group or machine basis)
-    # keys to remote access the target
-    # authorized:
     # optional stuff (ansible will not fail if omitted)
-    # user_ssh_username: ''
-    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
     ssh_config:
       - Host: bitbucket.org
         User: git
-        ForwardAgent: yes
         ForwardX11: no
         PreferredAuthentications: publickey
         ControlMaster: no
+
       - Host: github.com
         User: git
-        ForwardAgent: yes
         ForwardX11: no
         PreferredAuthentications: publickey
         ControlMaster: no
+
       - Host: '*htpc'
         Hostname: srv-htpc.lan
         User: archambf
         ForwardX11: yes
         ForwardAgent: yes
+
       - Host: hgw
         ForwardAgent: yes
         User: root
         Port: 22222
+
       - Host: rhgw
         Hostname: gw00
         User: root
         Port: 22222
+
+      - Host: "*.lxc"
+        StrictHostKeyChecking: no
+        PreferredAuthentications: publickey
+
+# list of users allowed to create unprivileged containers
+lxc_users:
+  - archf
+
+# path to the default container config file
+lxc_container_config: ~/.config/lxc/default.conf
 
 # note: path to mount point
 mounts:
@@ -58,5 +68,8 @@ mounts:
     opts: 'defaults,acl'
     group: users
 
+# list of ppa to install
 apt_repos:
   - 'ppa:x2go/stable'
+  - 'ppa:ubuntu-lxc/lxc-stable'
+  - 'ppa:ubuntu-lxc/lxd-stable'

@@ -3,13 +3,10 @@
 #  fixme: add a depdendancy to python
 #  todo: create a python role?
 - name: install ansible
-  sudo: yes
-  action: "{{ ansible_pkg_mgr }} pkg=ansible state=latest"
+  package: name=ansible state=latest
 
 - name: install python3 packages
-  sudo: yes
-  action: "{{ ansible_pkg_mgr }} pkg=python-pip state=latest"
+  package: name=python-pip state=latest
 
 - name: install ansible-playbook-debugger
-  sudo: yes
   pip: name=ansible-playbook-debugger

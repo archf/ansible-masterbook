@@ -2,12 +2,12 @@
 
 # vi: set ft=ruby
 
-ROLE_NAME = 'staging'
+ROLE_NAME = 'sambaservers'
 VAGRANTFILE_API_VERSION = '2'
 
 hosts = [
+  { name: 'm1', ip: '192.168.56.111', net: 'private_network', box: "bento/fedora-22" },
   { name: 'm2', ip: '192.168.56.112', net: 'private_network', box: "ubuntu/trusty64" }
-  # { name: 'm1', ip: '192.168.56.111', net: 'private_network', box: "bento/fedora-22" },
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # run the provisionner
           # ansible.verbose = 'v'
           ansible.limit = 'all'
-          ansible.playbook = 'common.yml'
+          ansible.playbook = 'samba.yml'         # Elaborate test that shows all features
 
         end #ansible vm.provision
 

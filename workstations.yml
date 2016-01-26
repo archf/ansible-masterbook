@@ -3,10 +3,8 @@
 - hosts: workstations
   become: yes
 
-  include: common.yml
-
   roles:
-  - workstation
-  # - synergy
-
-  # NOTE: Synergy .rpm or .deb must be placed inside roles/synergy/files
+    - common
+    - workstation
+    - lxc
+    # - synergy

@@ -1,0 +1,11 @@
+---
+
+- hosts: lxc
+  become: true
+
+  vars:
+    lxcm_containers:
+      - name: lxc-test
+
+  roles:
+    - lxcm

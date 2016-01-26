@@ -1,12 +1,8 @@
 ---
 
-  # one must sudo su to run as root on localhost from non-root that hence the
-  # need for become
+# note: one must sudo su to run as root on localhost from non-root
+# this configure accouts to enable ansaible management
 - hosts: all
   become: yes
   roles:
     - accounts
-
-  # add user to vboxsf (to mount shares inside vm)
-  tasks:
-    - include: task_lib/virtualbox_vl.yml
