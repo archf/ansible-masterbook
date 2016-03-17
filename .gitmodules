@@ -13,9 +13,9 @@
 [submodule "roles/workstation"]
 	path = roles/workstation
 	url = git@github.com:archf/workstation.git
-[submodule "roles/common"]
-	path = roles/common
-	url = git@github.com:archf/common.git
+[submodule "roles/packages"]
+	path = roles/packages
+	url = git@github.com:archf/ansible-packages.git
 [submodule "roles/openssh-server"]
 	path = roles/openssh-server
   url = git@github.com:archf/ansible-openssh-server.git
@@ -33,4 +33,4 @@
 	url = git@github.com:archf/ansible-network.git
 [submodule "roles/ntpd"]
 	path = roles/ntpd
-	url = git@github.com:archf/ansible-nptd.git
+	url = git@github.com:archf/ansible-ntpd.git
