@@ -1,4 +1,4 @@
-# hostname convention
+# Hostname convention
 
 * owner is specified explicitly when other than me
 * location is specified only when other than home?
@@ -14,7 +14,7 @@ available locations:
   c: machine in cloud
   v: vm or vps
 
-# list of acronyms (by type of servers)
+# List of acronyms (by type of servers)
 
 * web servers
   * web web server
