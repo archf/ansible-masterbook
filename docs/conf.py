@@ -16,64 +16,22 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# sys.path.insert(0, os.path.abspath('.'))
+
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 
-import sys
-import os
-from m2r import M2R
-m2r = M2R()
-
+# import sys
+# import os
 # sys.path.insert(0, os.path.abspath('..'))
 
-# Generate documentation on the fly based on Ansible default variables
-import yaml2rst
+# # to convert markdown to rst
+# from m2r import M2R
+# m2r = M2R()
 
-TOCTREE_TEMPLATE = """
-Contents:
 
-.. toctree::
-    :maxdepth: 2
-    :glob:
-
-    *
-"""
-
-def gen_toctree(rolename,text):
-    toc = open("../roles/" + rolename + "/docs/index.rst",'w')
-    toc.write(m2r("# " + rolename))
-    toc.write(TOCTREE_TEMPLATE)
-    if os.path.isfile("../roles/" + element + "/defaults/main.yml"):
-        toc.write("    defaults")
-    toc.close()
-
-# regenerate the default vars for each roles
-for element in os.listdir('../roles'):
-    print("processing " + element + "...")
-
-    # adding a symlink for each roles
-    if not os.path.islink(element):
-        os.symlink(os.path.abspath('..') + "/roles/" + element, element)
-
-    if os.path.isfile("../roles/" + element + "/defaults/main.yml"):
-
-        # genrerate a defaults variables page from roles defaults
-        infile = open("../roles/" + element + "/defaults/main.yml")
-        outfile = open("../roles/" + element + "/docs/defaults.rst",'w')
-        m2r("# " + element + " role defaults\n\n")
-        print(m2r("# " + element + " role defaults\n\n"))
-        outfile.write(m2r("# " + element + " role defaults\n\n"))
-        outfile.write(yaml2rst.convert_text(infile.read()))
-
-        # generate a toctree for each roles
-        gen_toctree(element, TOCTREE_TEMPLATE)
-
-        # close files
-        infile.close()
-        outfile.close()
-
+from ansidoc import Ansidoc
+ansidoc = Ansidoc(dirpath="../roles", target="README.md")
+ansidoc.run()
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -214,8 +172,8 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # html_logo = None
 
 # The name of an image file (relative to this directory) to use as a favicon of
-# the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
-# pixels large.
+# the docs.  This file should be a Windows icon file (.ico) being 16x16 or
+# 32x32 pixels large.
 #
 # html_favicon = None
 
@@ -306,23 +264,23 @@ htmlhelp_basename = 'ansible-masterbookdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
-     # The paper size ('letterpaper' or 'a4paper').
-     #
-     # 'papersize': 'letterpaper',
-
-     # The font size ('10pt', '11pt' or '12pt').
-     #
-     # 'pointsize': '10pt',
-
-     # Additional stuff for the LaTeX preamble.
-     #
-     # 'preamble': '',
-
-     # Latex figure (float) alignment
-     #
-     # 'figure_align': 'htbp',
-}
+# latex_elements = {
+#      # The paper size ('letterpaper' or 'a4paper').
+#      #
+#      # 'papersize': 'letterpaper',
+#
+#      # The font size ('10pt', '11pt' or '12pt').
+#      #
+#      # 'pointsize': '10pt',
+#
+#      # Additional stuff for the LaTeX preamble.
+#      #
+#      # 'preamble': '',
+#
+#      # Latex figure (float) alignment
+#      #
+#      # 'figure_align': 'htbp',
+# }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
@@ -483,6 +441,6 @@ epub_exclude_files = ['search.html']
 # epub_use_index = True
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
-intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
-intersphinx_mapping = {'patate': ('https://docs.python.org/3', None)}
+# intersphinx_mapping = {'https://docs.python.org/': None}
+# intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+# intersphinx_mapping = {'patate': ('https://docs.python.org/3', None)}

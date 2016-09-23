@@ -1,75 +1,59 @@
 ---
 
-### by default i create my account on each remote machine
-# NOTE: ansible fails when lists are undefined. The current workaround is to
-# define an empty list
-users:
-  - name: archf
-    groups: 'adm,lp,users'
-    append: yes
-    password: 'admin'
-    update_password: on_create
-    comments: 'Felix Archambault'
-    shell: "/bin/zsh"
-    gen_ssh_key: yes
-    dotfiles_src_path: "/home/archf/dotfiles"
-    dotfiles_ssh: 'git@bitbucket.org:archambf/dotfiles.git'
-    omzsh_src_path: "/home/archf/.oh-my-zsh"
-    vimdir_src_path: "/home/archf/.vim"
-    authorized:
-      - "{{ private_dir }}/public_keys/archf_ds00.pub"
-    # optional stuff (ansible will not fail if omitted)
-    ssh_config:
-      - Host: bitbucket.org
-        User: git
-        ForwardX11: no
-        PreferredAuthentications: publickey
-        ControlMaster: no
+# users_debug: yes
+users_generate_ssh_key: yes
+# users_default_domain: test.xyz
+users_exclusive_groupmembers: yes
+users_exclusive_groups: yes
 
-      - Host: github.com
-        User: git
-        ForwardX11: no
-        PreferredAuthentications: publickey
-        ControlMaster: no
+usergroups:
+  - name: sysadm
+    gid: 1001
 
-      - Host: '*htpc'
-        Hostname: srv-htpc.lan
-        User: archambf
-        ForwardX11: yes
-        ForwardAgent: yes
-
-      - Host: hgw
-        ForwardAgent: yes
-        User: root
-        Port: 22222
-
-      - Host: rhgw
-        Hostname: gw00
-        User: root
-        Port: 22222
-
-      - Host: "*.lxc"
-        StrictHostKeyChecking: no
-        PreferredAuthentications: publickey
-
-# list of users allowed to create unprivileged containers
 lxc_users:
   - archf
 
 # path to the default container config file
 lxc_container_config: ~/.config/lxc/default.conf
 
-# note: path to mount point
-mounts:
-  - src: '/dev/mapper/data_vg-home_lv'
-    name: '/media/home_lv'
-    state: mounted
-    fstype: ext4
-    opts: 'defaults,acl'
-    group: users
+# add some mountpoints
+# mounts:
+#   - dev: '/dev/mapper/data_vg-home_lv'
+#     path: '/media/home_lv'
+#     state: mounted
+#     fstype: ext4
+#     opts: 'defaults,acl'
+#     group: users
 
 # list of ppa to install
 apt_repos:
   - 'ppa:x2go/stable'
   - 'ppa:ubuntu-lxc/lxc-stable'
   - 'ppa:ubuntu-lxc/lxd-stable'
+
+pip_packages:
+    - sphinx-autobuild
+    - sphinx
+    - python-netaddr
+    - recommonmark
+    - pil
+    - pillow
+    - install sphinx_rtd_theme
+    - yaml2rst
+    - ldap
+    - passlib
+    - sphinxcontrib-libreoffice
+    - sphinxcontrib-exceltable
+    - m2r
+    - jinja2
+    - pyyaml
+    - pytest
+    - hypothesis
+    - twine
+    - flake8
+    - flake8-docstring
+    - autopep8
+    - tabulate
+    # - flake8-isort
+
+# ubuntu package: python3-venv, flake8

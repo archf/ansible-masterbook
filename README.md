@@ -20,9 +20,16 @@ sudo yum -y install git ansible
 sudo dnf install -y git ansible
 ```
 
+Alternatively you could install from a unbuntu ppa or from pip to get a most recent version
+
 ## list of quite stable roles
 
-* common: install default package on every machines
+* common: meta roles for roles below
+  - accounts
+  - packages
+  - openssh-server
+  - ntpd
+  - resolv
   * fail2ban
   * ntp
   * disable selinux
@@ -44,11 +51,10 @@ sudo dnf install -y git ansible
 
 * workstation
 * openssh: template sshd-config
-- samba
+s samba: configure a simple samba file server
 
 wip:
   * backup
-  * docker
   * collectd
   * ansiblecm: install and configure an ansible control machine
   * network: configure nic on a target
@@ -58,8 +64,9 @@ wip:
 todo soon:
   * git-install: install from a git repo
   * tar-install: install from a tarball
+  * dnsmasq: install and configure dnsmasq
 
-## roles from other people
+## interesting roles from other people
   * gitlab: https://galaxy.ansible.com/list#/roles/516
   * exim: https://galaxy.ansible.com/list#/roles/4842
   * grafana: https://github.com/azavea/ansible-grafana

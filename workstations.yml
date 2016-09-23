@@ -1,10 +1,20 @@
 ---
 
+# bootstrap installation
+- hosts: all
+  gather_facts: no
+
+  roles:
+    - bootstrap
+
 - hosts: workstations
+  # strategy: debug
   become: yes
 
   roles:
+    - accounts
     - common
+    - packages
     - workstation
     - lxc
-    # - synergy
+    - synergy
