@@ -37,3 +37,6 @@
 [submodule "roles/common"]
 	path = roles/common
 	url = git@github.com:archf/ansible-common.git
+[submodule "roles/bootstrap"]
+	path = roles/bootstrap
+	url = git@github.com:archf/ansible-bootstrap.git

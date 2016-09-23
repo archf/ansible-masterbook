@@ -6,7 +6,7 @@
 
 # Ansible transports arguments to modules in a file. The
 # path to the arguments file is in $1, and the file
-# contains the module's arguments like inn this example:
+# contains the module's arguments like in this example:
 #
 #       name="name" value=15 dest=/tmp/destfile
 #
@@ -47,9 +47,9 @@ esac
 if [ $changed != 0 ]
 then
     uci "${command}" "${key}=${value}"
-    echo "changed=True msg=ok"
+    echo '{"changed": true, "msg": ok"}'
     # echo "changed=True msg=executed uci ${command} ${key}=${value}"
     exit 0
 fi
-    echo "changed=False"
+    echo '{"changed": false, "msg": "ok"}'
     exit 0
