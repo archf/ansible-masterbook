@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ansible-accounts &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="index.html"/>
+        <link rel="next" title="ansible-ansiblecm" href="role-ansiblecm-README.html"/>
+        <link rel="prev" title="Hostname convention" href="hostname-guide.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Ansible Masterbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ansible-accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usergroups">Usergroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workstations">Workstations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssh-keys-management">SSH keys management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxcm-README.html">ansible-lxcm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>ansible-accounts</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/role-accounts-README.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ansible-accounts">
+<span id="ansible-accounts"></span><h1>ansible-accounts<a class="headerlink" href="#ansible-accounts" title="Permalink to this headline">¶</a></h1>
+<p>A role to create and configure user accounts and groups on a host.</p>
+<div class="section" id="requirements">
+<span id="requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible-version">
+<span id="ansible-version"></span><h3>Ansible version<a class="headerlink" href="#ansible-version" title="Permalink to this headline">¶</a></h3>
+<p>Minimum required ansible version is 2.1.</p>
+</div>
+</div>
+<div class="section" id="description">
+<span id="description"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="usergroups">
+<span id="usergroups"></span><h3>Usergroups<a class="headerlink" href="#usergroups" title="Permalink to this headline">¶</a></h3>
+<p>This role works in a usergroups paradigm. As your coworkers also needs to
+login on the same servers, user accounts are configured by adding one or
+multiple usergroups composed of one or more individual users that will end up
+attached to the unix group named after the usergroup name. Phew!</p>
+</div>
+<div class="section" id="workstations">
+<span id="workstations"></span><h3>Workstations<a class="headerlink" href="#workstations" title="Permalink to this headline">¶</a></h3>
+<p>You will often see around the term <code class="docutils literal"><span class="pre">workstations</span></code> either in the code or in
+part of variable&#8217;s name or as an ansible group name. Workstations can be seen
+as the main working machine. For instance a laptop or a desktop used for
+daily work by a single person should be part of this host group.</p>
+<p>So what does it change?</p>
+<p>For hosts in this special host group, the role behavior will change as not
+all <code class="docutils literal"><span class="pre">usergroups</span></code> nor every user of these usergroups are configured on the
+target. In fact, the sole user that will be added is the one which has a
+matching <code class="docutils literal"><span class="pre">workstation:</span> <span class="pre">&lt;hostname&gt;</span></code> configured in his user profile.</p>
+</div>
+<div class="section" id="ssh-keys-management">
+<span id="ssh-keys-management"></span><h3>SSH keys management<a class="headerlink" href="#ssh-keys-management" title="Permalink to this headline">¶</a></h3>
+<p>Private ssh keys are <strong>only managed on workstations</strong>. Agent-fowarding should be
+considered when using a <code class="docutils literal"><span class="pre">jumphost</span></code> or hopping through a bastion host. To make
+things manageable and flexible, following logic is used to allow a user to
+have have multiple ssh keys.</p>
+<ul class="simple">
+<li>default keyname id_rsa and id_rsa.pub are not use for complexity reasons</li>
+<li>default keys give access to an internal domain (i.e. company domain)</li>
+<li>other keys might optionaly exist and give access to other external domains</li>
+<li>keynames follow a <code class="docutils literal"><span class="pre">&lt;user&gt;.&lt;domain&gt;</span></code></li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">domain</span></code> part is important as it hints you what it gives access to. As
+such, this is the role behavior regarding your keyring management.</p>
+<ul class="simple">
+<li>default keys are deployed as <user>.<domain> and <user>.<domain>.pub on workstations</li>
+<li>public keys will be deployed exclusively on target where ansible_fqdn == <user>.<domain></li>
+<li>ssh keys can be rotated, this behavior is disabled by default</li>
+<li>keypairs are created on workstations at user account creations</li>
+<li>all public keys of configured keypairs are fetched back to usergroup keyring</li>
+<li>private keys are never fetched to the usergroup keyring</li>
+<li>other keys can be requested to be generated at user account creation</li>
+<li>every public key is deployed in an exclusive fashion</li>
+<li>other keys are not deployed in the internal domain (keys are exclusive)</li>
+<li>to make use of other keys, the user must configure his <code class="docutils literal"><span class="pre">ssh_config</span></code> properly</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<span id="usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p><strong>Usergroup directory scaffolding</strong></p>
+<p>To add users, you need to configure usergroups inside <code class="docutils literal"><span class="pre">group_vars</span></code> or <code class="docutils literal"><span class="pre">host_vars</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span>  <span class="l l-Scalar l-Scalar-Plain">usergroups</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">vendorgroup</span>
+      <span class="l l-Scalar l-Scalar-Plain">gid</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1001</span>
+      <span class="c1"># gid is optional</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">customergroup</span>
+</pre></div>
+</div>
+<p>You can also tweak the behavior on a per group or per machine basis. See
+&#8216;Default vars&#8217;.</p>
+<p>Then at the path defined by <code class="docutils literal"><span class="pre">groups_dir</span></code> variable (<code class="docutils literal"><span class="pre">{{</span> <span class="pre">playbook_dir</span> <span class="pre">}}/private/groups</span></code>)
+create a folder by the <code class="docutils literal"><span class="pre">usergroup</span> <span class="pre">name</span></code> with content such as</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ &gt; tree
+.
+├── customergroup
+│   └── users.yml
+└── vendorgroup
+    └── users.yml
+</pre></div>
+</div>
+<p>for each of the groups you declared in <code class="docutils literal"><span class="pre">usergroups</span></code>. Other missing
+directories inside the group directory will be created by the play.</p>
+<p><strong>Usergroup members configuration</strong></p>
+<p>In each group you will have a file where you define and configure the unix
+group members. See the Role Variables<code class="docutils literal"><span class="pre">section</span> <span class="pre">for</span> <span class="pre">more</span> <span class="pre">information</span> <span class="pre">on</span> <span class="pre">ways</span> <span class="pre">to</span> <span class="pre">personalise</span> <span class="pre">a</span> <span class="pre">user</span> <span class="pre">account.</span> <span class="pre">Most</span> <span class="pre">settings</span> <span class="pre">in</span></code>users_defaults` can be
+overridden.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ &gt; cat vendorgroup/users.yml
+---
+
+users:
+
+  - name: foo
+    groups:
+      - adm
+      - lp
+      - users
+    comments: <span class="s1">&#39;foo account&#39;</span>
+    shell: <span class="s2">&quot;/bin/zsh&quot;</span>
+    ssh_domains:
+      - company.domain
+
+    dotfiles_dir: dotfiles
+    omyzsh_dir: .oh-my-zsh
+    vim_dir: .vim
+
+    dotfiles_symlinks:
+      - vimrc
+      - bashrc
+      - zshrc
+      - gitconfig
+      - git_template
+      - profile
+      - zprofile
+      - tmux.conf
+      - ansible.cfg
+      - ctags
+      - pypirc
+
+  - name: bar
+    ssh_domains:
+      - lan
+      - example.com
+    comments: <span class="s1">&#39;bar user&#39;</span>
+
+  - name: baz
+    groups:
+      - users
+    ssh_domains:
+      - lan
+      - example.org
+    comments: <span class="s1">&#39;baz user&#39;</span>
+</pre></div>
+</div>
+<p><strong>User ssh_configuration</strong></p>
+<p>Each user can optionaly manage their <code class="docutils literal"><span class="pre">ssh_config</span></code> with ansible. For that to happen,
+you have to create a `<username>_ssh_config.yml file inside the group directory.</p>
+<p>For example for the <em>foo</em> user above, the statements below will be transmuted into a
+<code class="docutils literal"><span class="pre">~/.ssh/config</span></code> Parameters from <code class="docutils literal"><span class="pre">users_defaults['ssh_config']</span></code> are also
+considered. This file is <em>totaly optional</em>. The playbook will not fail if it
+is missing for any given user.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ &gt; cat vendorgroup/foo_ssh_config.yml
+---
+
+ssh_config:
+  - Host: bitbucket.org
+    User: git
+    ForwardX11: no
+    PreferredAuthentications: publickey
+    ControlMaster: no
+
+  - Host: github.com
+    User: git
+    ForwardX11: no
+    PreferredAuthentications: publickey
+    ControlMaster: no
+
+  - Host: <span class="s2">&quot;*lb-*&quot;</span>
+    User: archambf
+    Hostname: <span class="s2">&quot;%h.lb.labfqdn&quot;</span>
+    ForwardAgent: yes
+    StrictHostKeyChecking: yes
+    ProxyCommand: ssh -W %h:%p jumphost
+</pre></div>
+</div>
+<p>As you might notice,</p>
+<ul class="simple">
+<li>Every key must be a valid <code class="docutils literal"><span class="pre">ssh_config</span></code> option.</li>
+<li><code class="docutils literal"><span class="pre">Match</span></code> statements are supported.</li>
+<li>Quote strings with special chars else yaml parsing will fail</li>
+</ul>
+</div>
+</div>
+<div class="section" id="role-variables">
+<span id="role-variables"></span><h2>Role Variables<a class="headerlink" href="#role-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variables-conditionally-loaded">
+<span id="variables-conditionally-loaded"></span><h3>Variables conditionally loaded<a class="headerlink" href="#variables-conditionally-loaded" title="Permalink to this headline">¶</a></h3>
+<p>None.</p>
+</div>
+<div class="section" id="default-vars">
+<span id="default-vars"></span><h3>Default vars<a class="headerlink" href="#default-vars" title="Permalink to this headline">¶</a></h3>
+<p>Defaults from <code class="docutils literal"><span class="pre">defaults/main.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># An external directory containing sensitive data (group profiles, public ssh</span>
+<span class="c1"># keys, users&#39;s ssh_config, ...etc.</span>
+<span class="l l-Scalar l-Scalar-Plain">groups_dir</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">playbook_dir</span><span class="nv"> </span><span class="s">}}/private/groups&quot;</span>
+
+<span class="c1"># Will include a `debug.yml` task file which will print variable information.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># Don&#39;t generate private ssh key in user accounts on every machine, consider</span>
+<span class="c1"># agent forwarding instead.</span>
+<span class="c1"># Use this in group_vars to toggle ssh_key creation in a group of hosts.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_generate_ssh_keys</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># SSH key rotation is disabled by default.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_rotate_ssh_keys</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># Max age of keys for ssh_rotation. This is a time specification that must be</span>
+<span class="c1"># compatbile with the find module.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_ssh_key_max_age</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">60d</span>
+
+<span class="c1"># Default ssh key domain. Default key is the concatenation of the username and</span>
+<span class="c1"># this value. For public key to be propagated to the right machines, it should</span>
+<span class="c1"># match the &#39;ansible_domain&#39; fact and thus hint wich realm the key gives access</span>
+<span class="c1"># to.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_domain</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+
+<span class="c1"># Configure &#39;/etc/skel&#39; facility</span>
+<span class="l l-Scalar l-Scalar-Plain">users_configure_skeleton</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># If yes, &#39;usersgroups&#39; are exclusive. That means that all unstated unix user</span>
+<span class="c1"># groups in play variable will deleted along with all it&#39;s members at the exception of</span>
+<span class="c1"># group `nogroup`.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_exclusive_usergroups</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># List of &#39;usergroups&#39; that will never be removed</span>
+<span class="l l-Scalar l-Scalar-Plain">users_exclusive_usergroups_exceptions</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nogroup</span>
+
+<span class="c1"># If yes, group members are exclusive. That means that all unstated group</span>
+<span class="c1"># members in play variables will deleted at the exception of user `nobody`.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_exclusive_groupmembers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="c1"># Default args for the user module and sensible defaults for other role</span>
+<span class="c1"># features on a per user accounts basis. Override these on a per user basis</span>
+<span class="c1"># inside the &#39;users.yml&#39; file of the usergroup.</span>
+<span class="l l-Scalar l-Scalar-Plain">users_defaults</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
+  <span class="c1"># fixme: task should generate something random per user, register it, and send to user by mail.</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;changeme&quot;</span> <span class="c1"># Initial user password.</span>
+  <span class="l l-Scalar l-Scalar-Plain">shell</span><span class="p p-Indicator">:</span> <span class="s">&quot;/bin/bash&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">system</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">groups</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">omit</span>
+  <span class="l l-Scalar l-Scalar-Plain">append</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>         <span class="c1"># Append to group</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">update_password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">on_create</span> <span class="c1"># Default to &#39;on_create&#39; (will change passwd if they differ)</span>
+
+  <span class="c1"># This &#39;home&#39; variable is the path prefix to the directory that will contain</span>
+  <span class="c1"># a user account. If you work on Solaris you could set this to</span>
+  <span class="c1"># &#39;/export/home&#39;.</span>
+  <span class="l l-Scalar l-Scalar-Plain">home</span><span class="p p-Indicator">:</span> <span class="s">&#39;/home&#39;</span>
+
+  <span class="c1"># Module defaults</span>
+  <span class="l l-Scalar l-Scalar-Plain">createhome</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>     <span class="c1"># Defaults to yes</span>
+  <span class="l l-Scalar l-Scalar-Plain">move_home</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>       <span class="c1"># Defaults to no</span>
+  <span class="l l-Scalar l-Scalar-Plain">non_unique</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>      <span class="c1"># Defaults to no</span>
+
+  <span class="c1"># Set the amount of days a password can remain inactive after expiration.</span>
+  <span class="c1"># This is passed to the &#39;inactive&#39; options of &#39;passwd&#39; command.</span>
+  <span class="l l-Scalar l-Scalar-Plain">inactive</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">365</span>
+
+  <span class="c1"># SSH configuration defaults.</span>
+  <span class="c1"># fixme: task should generate something random, register it, and send to user by mail.</span>
+  <span class="l l-Scalar l-Scalar-Plain">ssh_key_passphrase</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">q1w2e3</span>
+  <span class="l l-Scalar l-Scalar-Plain">ssh_key_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rsa</span>
+  <span class="l l-Scalar l-Scalar-Plain">ssh_key_bits</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2048</span>
+
+  <span class="c1"># Homedir skeleton.</span>
+  <span class="l l-Scalar l-Scalar-Plain">skel</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;.ssh/controlmasters&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;.ssh/old_keys&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;bin&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&#39;tmp&#39;</span>
+
+  <span class="c1"># Values for ~/.ssh/config. Those are for a &quot;Host *&quot; clause at the top and</span>
+  <span class="c1"># will be applied to every users. This doesn&#39;t prevent you from having</span>
+  <span class="c1"># multiple &quot;Host *&quot; statements under it that will supersede this one. I think</span>
+  <span class="c1"># those are acceptable sane defaults.</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">ssh_config</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">ServerAliveInterval</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">41</span>
+    <span class="l l-Scalar l-Scalar-Plain">ControlPersist</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">120s</span>
+    <span class="l l-Scalar l-Scalar-Plain">ControlMaster</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+    <span class="l l-Scalar l-Scalar-Plain">ControlPath</span><span class="p p-Indicator">:</span> <span class="s">&#39;~/.ssh/controlmasters/%r@%h:%p&#39;</span>
+
+  <span class="c1"># This is the list of files to symlinks to your dotfiles repo. While empty,</span>
+  <span class="c1"># you can change if you know users share a common set of dotfiles.</span>
+  <span class="l l-Scalar l-Scalar-Plain">dotfiles_symlinks</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-with-ansible-galaxy">
+<span id="install-with-ansible-galaxy"></span><h3>Install with Ansible Galaxy<a class="headerlink" href="#install-with-ansible-galaxy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ansible-galaxy install archf.accounts
+</pre></div>
+</div>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">archf.accounts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-with-git">
+<span id="install-with-git"></span><h3>Install with git<a class="headerlink" href="#install-with-git" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want a global installation, clone it into your <code class="docutils literal"><span class="pre">roles_path</span></code>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git clone git@github.com:archf/ansible-accounts.git /path/to/roles_path
+</pre></div>
+</div>
+<p>But I often add it as a submdule in a given <code class="docutils literal"><span class="pre">playbook_dir</span></code> repository.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git submodule add git@github.com:archf/ansible-accounts.git &lt;playbook_dir&gt;/roles/accounts
+</pre></div>
+</div>
+<p>As the role is not managed by Ansible Galaxy, you do not have to specify the
+github user account.</p>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">accounts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ansible-role-dependencies">
+<span id="ansible-role-dependencies"></span><h2>Ansible role dependencies<a class="headerlink" href="#ansible-role-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>None.</p>
+</div>
+<div class="section" id="todo">
+<span id="todo"></span><h2>Todo<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>manage sudoers</li>
+<li>generate random passwords using passlib and mail&#8217;em to user</li>
+</ul>
+</div>
+<div class="section" id="license">
+<span id="license"></span><h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>BSD.</p>
+</div>
+<div class="section" id="author-information">
+<span id="author-information"></span><h2>Author Information<a class="headerlink" href="#author-information" title="Permalink to this headline">¶</a></h2>
+<p>Felix Archambault.</p>
+</div>
+<div class="section" id="role-stack">
+<span id="role-stack"></span><h2>Role stack<a class="headerlink" href="#role-stack" title="Permalink to this headline">¶</a></h2>
+<p>This role was carefully selected to be part an ultimate deck of roles to manage
+your infrastructure.</p>
+<p>All roles&#8217; documentation is wrapped in this <a class="reference external" href="http://127.0.0.1:8000/">convenient guide</a>.</p>
+<hr class="docutils" />
+<p>This README was generated using ansidoc. This tool is available on pypi!</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip3 install ansidoc
+
+<span class="c1"># validate by running a dry-run (will output result to stdout)</span>
+ansidoc --dry-run &lt;rolepath&gt;
+
+<span class="c1"># generate you role readme file</span>
+ansidoc &lt;rolepath&gt;
+</pre></div>
+</div>
+<p>You can even use it programatically from sphinx. Check it out.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="role-ansiblecm-README.html" class="btn btn-neutral float-right" title="ansible-ansiblecm" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hostname-guide.html" class="btn btn-neutral" title="Hostname convention" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ansible Masterbook &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Hostname convention" href="hostname-guide.html"/>
+        <link rel="prev" title="Welcome to ansible-masterbook’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ansible Masterbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-quite-stable-roles">list of quite stable roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interesting-roles-from-other-people">interesting roles from other people</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#todo">Todo:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roles-to-find-or-create">roles to find or create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ad-hoc-roles">ad-hoc roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-tasks">other tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thoughts">Thoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-roles-should-be-executed-on-all-machines-by-default">Some roles should be executed on all machines by default</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-accounts-README.html">ansible-accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxcm-README.html">ansible-lxcm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Ansible Masterbook</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/README.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ansible-masterbook">
+<span id="ansible-masterbook"></span><h1>Ansible Masterbook<a class="headerlink" href="#ansible-masterbook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisite">
+<span id="prerequisite"></span><h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h2>
+<p>Install git and ansible on the control machine:</p>
+<p>Via script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -s https://raw.githubusercontent.com/archf/ansible-masterbook/master/ansible-bootstrap.sh <span class="p">|</span> sh
+</pre></div>
+</div>
+<p>Or manually:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Debian</span>
+apt-get -y install git ansible
+<span class="c1"># rhel</span>
+sudo yum -y install git ansible
+<span class="c1"># or</span>
+sudo dnf install -y git ansible
+</pre></div>
+</div>
+<p>Alternatively you could install from a unbuntu ppa or from pip to get a most recent version</p>
+</div>
+<div class="section" id="list-of-quite-stable-roles">
+<span id="list-of-quite-stable-roles"></span><h2>list of quite stable roles<a class="headerlink" href="#list-of-quite-stable-roles" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">common: meta roles for roles below</p>
+<ul class="simple">
+<li>accounts</li>
+<li>packages</li>
+<li>openssh-server</li>
+<li>ntpd</li>
+<li>resolv</li>
+</ul>
+<ul class="simple">
+<li>fail2ban</li>
+<li>ntp</li>
+<li>disable selinux</li>
+</ul>
+</li>
+<li><p class="first">accounts: create accounts on any machine (requires root)</p>
+</li>
+<li><p class="first">workstation: install package for daily work (this could be splitted eventually)
+* python
+* golang
+* rust
+* ...</p>
+<p>Currently installs:</p>
+<ul class="simple">
+<li>python3-ipython</li>
+<li>python3-ipdb</li>
+<li>python3-devel</li>
+<li>python-pip</li>
+<li>inotify-tools-devel</li>
+<li>pandoc</li>
+<li>urlview</li>
+</ul>
+</li>
+<li><p class="first">workstation</p>
+</li>
+<li><p class="first">openssh: template sshd-config
+s samba: configure a simple samba file server</p>
+</li>
+</ul>
+<p>wip:</p>
+<ul class="simple">
+<li>backup</li>
+<li>collectd</li>
+<li>ansiblecm: install and configure an ansible control machine</li>
+<li>network: configure nic on a target</li>
+<li>openWrt</li>
+<li>multimedia: install multimedia packages</li>
+</ul>
+<p>todo soon:</p>
+<ul class="simple">
+<li>git-install: install from a git repo</li>
+<li>tar-install: install from a tarball</li>
+<li>dnsmasq: install and configure dnsmasq</li>
+</ul>
+</div>
+<div class="section" id="interesting-roles-from-other-people">
+<span id="interesting-roles-from-other-people"></span><h2>interesting roles from other people<a class="headerlink" href="#interesting-roles-from-other-people" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>gitlab: https://galaxy.ansible.com/list#/roles/516</li>
+<li>exim: https://galaxy.ansible.com/list#/roles/4842</li>
+<li>grafana: https://github.com/azavea/ansible-grafana</li>
+<li>influxdb:</li>
+</ul>
+</div>
+<div class="section" id="todo">
+<span id="todo"></span><h2>Todo:<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="roles-to-find-or-create">
+<span id="roles-to-find-or-create"></span><h2>roles to find or create<a class="headerlink" href="#roles-to-find-or-create" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>remote-desktop</li>
+<li>ansible: install and configure ansible</li>
+<li>postgress</li>
+<li>powerdns-recursor</li>
+<li>powerdns-authoritative</li>
+<li>collectd or python-diammond</li>
+<li>influx-db</li>
+<li>graphite or graphana</li>
+<li>kodi</li>
+<li>wikia</li>
+<li>shinken or nagios</li>
+<li>vagrant - install vagrant from website</li>
+<li>ldap</li>
+<li>redmine</li>
+<li>cobbler<ul>
+<li>make a special  case to install to openwrt from source</li>
+</ul>
+</li>
+<li>multimedia: install music or video package<ul>
+<li>vlc</li>
+<li>asunder</li>
+<li>easytag</li>
+</ul>
+</li>
+<li>pythondev:</li>
+<li>golangdev:</li>
+<li>rustdev:</li>
+</ul>
+<div class="section" id="ad-hoc-roles">
+<span id="ad-hoc-roles"></span><h3>ad-hoc roles<a class="headerlink" href="#ad-hoc-roles" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>dotfiles: update given repos on all targets</li>
+<li>accounts-remove: remove given accounts on all targets</li>
+</ul>
+</div>
+<div class="section" id="other-tasks">
+<span id="other-tasks"></span><h3>other tasks<a class="headerlink" href="#other-tasks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>ntp</li>
+<li>fqdn</li>
+<li>disk partionning (lvm)</li>
+<li>backup (script from a git repo + cronjob) – one for the os and the other for</li>
+<li>the data</li>
+<li>tmpfs (mount /tmp in a tmpfs when there is enough ram ??? i think this doesn&#8217;t allow
+you to suspend to ram)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="thoughts">
+<span id="thoughts"></span><h2>Thoughts<a class="headerlink" href="#thoughts" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="some-roles-should-be-executed-on-all-machines-by-default">
+<span id="some-roles-should-be-executed-on-all-machines-by-default"></span><h2>Some roles should be executed on all machines by default<a class="headerlink" href="#some-roles-should-be-executed-on-all-machines-by-default" title="Permalink to this headline">¶</a></h2>
+<p>ex:</p>
+<ul class="simple">
+<li>common</li>
+<li>accounts</li>
+<li>fail2ban</li>
+<li>shinken or nagios</li>
+<li>backup: install backup scripts</li>
+<li>collectd or python-diammond</li>
+<li>suspend_ram: cronjob to suspend machine to ram</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hostname-guide.html" class="btn btn-neutral float-right" title="Hostname convention" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to ansible-masterbook’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

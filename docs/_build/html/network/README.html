@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ansible-network &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Ansible Masterbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-accounts-README.html">ansible-accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-lxcm-README.html">ansible-lxcm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>ansible-network</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/network/README.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ansible-network">
+<span id="ansible-network"></span><h1>ansible-network<a class="headerlink" href="#ansible-network" title="Permalink to this headline">¶</a></h1>
+<p>Configure network devices on a target host.</p>
+<div class="section" id="description">
+<span id="description"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Configure network devices on a target host. This roles aims to provide a seemless
+rhel or debian derivatives configuration experience.</p>
+<div class="section" id="templates">
+<span id="templates"></span><h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<p>There are 4 templates.</p>
+<p>For FEDORA | RHEL | CENTOS</p>
+<ul class="simple">
+<li>Redhat_routes.j2      -&gt; routes-* configuration files</li>
+<li>Redhat_device.j2      -&gt; ifcfg-* device files in <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/</span></code></li>
+</ul>
+<p>For DEBIAN | UBUNTU</p>
+<ul class="simple">
+<li>Debian_interfaces.j2  -&gt; main file <code class="docutils literal"><span class="pre">/etc/network/interfaces</span></code></li>
+<li>Debian_devices.j2     -&gt; device file that goes in <code class="docutils literal"><span class="pre">/etc/network/interfaces.d/</span></code></li>
+</ul>
+</div>
+<div class="section" id="configuration-table">
+<span id="configuration-table"></span><h3>Configuration table<a class="headerlink" href="#configuration-table" title="Permalink to this headline">¶</a></h3>
+<p>List of variables to describing a device</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">variable</span>      <span class="o">|</span> <span class="n">description</span>                                        <span class="o">|</span> <span class="n">value</span>               <span class="o">|</span> <span class="nb">type</span> <span class="o">|</span>
+<span class="o">|---------------|----------------------------------------------------|---------------------|------|</span>
+<span class="o">|</span> <span class="n">device</span>        <span class="o">|</span> <span class="n">device</span> <span class="n">name</span>                                        <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="nb">type</span>          <span class="o">|</span> <span class="n">device</span> <span class="nb">type</span>                                        <span class="o">|</span> <span class="n">see</span> <span class="nb">type</span> <span class="n">table</span>      <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">stp</span>           <span class="o">|</span> <span class="n">on</span> <span class="n">by</span> <span class="n">default</span><span class="p">,</span> <span class="n">force</span> <span class="n">stp</span> <span class="n">off</span> <span class="n">when</span> <span class="n">device</span> <span class="o">==</span> <span class="n">bridge</span> <span class="o">|</span> <span class="n">on</span><span class="p">,</span><span class="n">off</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">bridge</span>        <span class="o">|</span> <span class="n">specify</span> <span class="n">bridge</span> <span class="n">to</span> <span class="n">attach</span> <span class="n">device</span> <span class="n">to</span>                 <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">bootproto</span>     <span class="o">|</span> <span class="n">specify</span> <span class="n">boot</span> <span class="n">protocol</span>                              <span class="o">|</span> <span class="n">static</span> <span class="ow">or</span> <span class="n">none</span><span class="p">,</span><span class="n">dhcp</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">onboot</span>        <span class="o">|</span> <span class="n">bring</span> <span class="n">up</span> <span class="n">at</span> <span class="n">boot</span> <span class="n">time</span>                              <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">gw</span>            <span class="o">|</span> <span class="n">gateway</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">ipv4</span> <span class="ow">and</span> <span class="n">ipv6</span> <span class="n">cidr</span>                 <span class="o">|</span> <span class="o">&lt;</span><span class="n">gateway</span> <span class="n">ip</span><span class="o">&gt;</span>        <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ips</span>           <span class="o">|</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">ipv4</span> <span class="ow">and</span> <span class="n">ipv6</span> <span class="n">cidr</span>                         <span class="o">|</span> <span class="n">cidr</span>                <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">delay</span>         <span class="o">|</span> <span class="n">wait</span> <span class="n">time</span> <span class="k">for</span> <span class="n">bridge</span> <span class="n">to</span> <span class="n">join</span> <span class="n">network</span>               <span class="o">|</span> <span class="o">&lt;</span><span class="n">seconds</span><span class="o">&gt;</span>           <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">peerdns</span>       <span class="o">|</span> <span class="n">use</span> <span class="n">dns</span> <span class="kn">from</span> <span class="nn">option</span> <span class="mi">6</span> <span class="p">(</span><span class="n">will</span> <span class="n">overwite</span> <span class="n">resolv</span><span class="o">.</span><span class="n">conf</span>   <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">dns</span>           <span class="o">|</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">dns</span> <span class="n">to</span> <span class="n">override</span> <span class="n">resolv</span><span class="o">.</span><span class="n">conf</span> <span class="k">with</span>           <span class="o">|</span> <span class="n">see</span> <span class="n">example</span>         <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">linkdelay</span>     <span class="o">|</span> <span class="n">wait</span> <span class="n">time</span> <span class="k">for</span> <span class="n">ethernet</span><span class="p">,</span> <span class="p">(</span><span class="n">stp</span> <span class="n">converence</span><span class="p">)</span>           <span class="o">|</span> <span class="o">&lt;</span><span class="n">seconds</span><span class="o">&gt;</span>           <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">routes</span>        <span class="o">|</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">static</span> <span class="n">routes</span> <span class="n">to</span> <span class="n">add</span>                       <span class="o">|</span> <span class="n">see</span> <span class="n">routes</span> <span class="n">table</span>    <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_init</span>     <span class="o">|</span> <span class="n">enable</span> <span class="n">ipv6</span>                                        <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_fatal</span>    <span class="o">|</span> <span class="n">disable</span> <span class="n">device</span> <span class="n">on</span> <span class="n">failure</span>                          <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv4_fatal</span>    <span class="o">|</span> <span class="n">disable</span> <span class="n">device</span> <span class="n">on</span> <span class="n">failure</span>                          <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_autoconf</span> <span class="o">|</span> <span class="n">stateless</span> <span class="n">configuration</span>                            <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_router</span>   <span class="o">|</span> <span class="n">node</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">ipv6</span> <span class="n">router</span> <span class="p">(</span><span class="n">enables</span> <span class="n">ipv6</span> <span class="n">forwarding</span><span class="p">)</span>   <span class="o">|</span> <span class="n">yes</span><span class="p">,</span><span class="n">no</span>              <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>type=ovsbridge is supported</li>
+<li>stp is always enabled for bridge devices unless you explicitly turn it off</li>
+<li><code class="docutils literal"><span class="pre">bootproto</span></code> defaults to &#8216;dhcp&#8217; if ommited</li>
+<li>gw is also used by ip route to set the gateway</li>
+<li>if list contains multiple ips, secondary ips will be add</li>
+<li>if and ipv6 addr is not in cidr notation, will default to a /64 prefix.</li>
+<li>ipv6 is always enabled.</li>
+</ul>
+<p>Device types</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">value</span>     <span class="o">|</span> <span class="n">description</span>                   <span class="o">|</span>
+<span class="o">|-----------|-------------------------------|</span>
+<span class="o">|</span> <span class="n">Ethernet</span>  <span class="o">|</span> <span class="n">real</span> <span class="n">physical</span> <span class="n">ethernet</span> <span class="n">device</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">Bridge</span>    <span class="o">|</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">linux</span> <span class="n">bridge</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">ovsbridge</span> <span class="o">|</span> <span class="n">openvswitch</span> <span class="n">bridge</span>            <span class="o">|</span>
+<span class="o">|</span> <span class="n">bond</span>      <span class="o">|</span> <span class="n">bond</span> <span class="n">several</span> <span class="n">devices</span> <span class="n">together</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">6</span><span class="n">to4</span>      <span class="o">|</span> <span class="mi">6</span><span class="n">to4</span> <span class="n">tunnel</span>                   <span class="o">|</span>
+</pre></div>
+</div>
+<p><em>Notes</em></p>
+<ul class="simple">
+<li>bond support not yet implemented</li>
+<li>to detrunk a vlan, simply create a device using <code class="docutils literal"><span class="pre">&lt;device</span> <span class="pre">name&gt;.&lt;vlan_id&gt;</span></code> as device name</li>
+</ul>
+<p><em>Routes</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">Variables</span> <span class="o">|</span> <span class="n">description</span>  <span class="o">|</span> <span class="n">value</span>                                       <span class="o">|</span> <span class="nb">type</span> <span class="o">|</span>
+<span class="o">|-----------|--------------|---------------------------------------------|------|</span>
+<span class="o">|</span> <span class="n">to</span>        <span class="o">|</span> <span class="n">route</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cidr</span> <span class="n">ip</span> <span class="p">(</span><span class="ow">or</span> <span class="nb">any</span> <span class="n">value</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">ip</span> <span class="n">route</span><span class="p">)</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">gw</span>        <span class="o">|</span> <span class="n">gw</span> <span class="n">device</span>    <span class="o">|</span> <span class="o">/</span><span class="mi">32</span> <span class="n">ip</span> <span class="n">address</span><span class="o">*</span>                             <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li>if no specific gw is provided, it will default to the device gateway</li>
+<li>to avoid duplicate default gateway, routes are defined for each devices based on subnet and subnet mask</li>
+</ul>
+</div>
+<div class="section" id="interesting-tips">
+<span id="interesting-tips"></span><h3>Interesting Tips<a class="headerlink" href="#interesting-tips" title="Permalink to this headline">¶</a></h3>
+<p>¡This sections needs a cleanup!</p>
+<p>List all fedora|rhel|centos usable device options.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/sysconfig/network-scripts <span class="o">&amp;&amp;</span> grep -r -E -o <span class="s1">&#39;\{[a-zA-Z0-9]+\}&#39;</span>  <span class="p">|</span> grep -E -i -I -v <span class="s1">&#39;device|1|2|down|ppp|down&#39;</span> <span class="p">|</span> uniq -u
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># quick nating using nftables wip</span>
+sudo nft add table nat
+sudo nft add chain nat prerouting <span class="o">{</span> <span class="nb">type</span> nat hook prerouting priority <span class="m">0</span> <span class="se">\;</span> <span class="o">}</span>
+sudo nft add rule nat postrouting masquerade
+</pre></div>
+</div>
+<p><em>lxc bridge nating</em></p>
+<p>Replace vars with according to your needs.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">LXC_BRIDGE</span><span class="o">=</span>lxcbr0
+<span class="nv">LXC_NETWORK</span><span class="o">=</span>192.168.0.1
+<span class="nv">use_iptables_lock</span><span class="o">=</span><span class="s2">&quot;-w&quot;</span>
+<span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+iptables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p udp --dport <span class="m">67</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p tcp --dport <span class="m">67</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p udp --dport <span class="m">53</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p tcp --dport <span class="m">53</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -I FORWARD -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -I FORWARD -o <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -j ACCEPT
+iptables <span class="nv">$use_iptables_lock</span> -t nat -A POSTROUTING -s <span class="si">${</span><span class="nv">LXC_NETWORK</span><span class="si">}</span> ! -d <span class="si">${</span><span class="nv">LXC_NETWORK</span><span class="si">}</span> -j MASQUERADE
+iptables <span class="nv">$use_iptables_lock</span> -t mangle -A POSTROUTING -o <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p udp -m udp --dport <span class="m">68</span> -j CHECKSUM --checksum-fill
+</pre></div>
+</div>
+<p><em>enable ipv6 forwarding on bridge</em></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">LXC_BRIDGE</span><span class="o">=</span>lxcbr0
+<span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv6/conf/all/forwarding
+<span class="nb">echo</span> <span class="m">2</span> &gt; /proc/sys/net/ipv6/conf/all/accept_ra
+<span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv6/conf/all/accept_ra_from_local
+s sysctl -w net.ipv6.conf.all.accept_ra_from_local<span class="o">=</span>1
+s sysctl -w net.ipv6.conf.all.accept_ra_defrtr<span class="o">=</span>1
+
+<span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv6/conf/<span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span>/forwarding
+<span class="nb">echo</span> <span class="m">2</span> &gt; /proc/sys/net/ipv6/conf/<span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span>/accept_ra
+s sysctl -w net.ipv6.conf.lxcbr0.accept_ra_from_local<span class="o">=</span>1
+
+<span class="nb">echo</span> <span class="m">0</span> &gt; /proc/sys/net/ipv6/conf/<span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span>/autoconf
+<span class="nb">echo</span> <span class="m">0</span> <span class="se">\&gt;</span> /proc/sys/net/ipv6/conf/<span class="se">\$</span><span class="o">{</span>LXC<span class="se">\_</span>BRIDGE<span class="o">}</span>/accept<span class="se">\_</span>dad <span class="o">||</span> <span class="nb">true</span>
+
+<span class="nv">LXC_BRIDGE</span><span class="o">=</span>lxcbr0
+<span class="nv">LXC_IPV6_NETWORK</span><span class="o">=</span>fd56:db20:4808:25ae::/64
+<span class="nv">use_iptables_lock</span><span class="o">=</span><span class="s2">&quot;-w&quot;</span>
+ip6tables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p udp --dport <span class="m">67</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p tcp --dport <span class="m">67</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p udp --dport <span class="m">53</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -I INPUT -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -p tcp --dport <span class="m">53</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -I FORWARD -i <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -I FORWARD -o <span class="si">${</span><span class="nv">LXC_BRIDGE</span><span class="si">}</span> -j ACCEPT
+ip6tables <span class="nv">$use_iptables_lock</span> -t nat -A POSTROUTING -s <span class="si">${</span><span class="nv">LXC_IPV6_NETWORK</span><span class="si">}</span> ! -d <span class="si">${</span><span class="nv">LXC_IPV6_NETWORK</span><span class="si">}</span> -j MASQUERADE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="requirements">
+<span id="requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible-version">
+<span id="ansible-version"></span><h3>Ansible version<a class="headerlink" href="#ansible-version" title="Permalink to this headline">¶</a></h3>
+<p>Minimum required ansible version is 2.0.</p>
+</div>
+<div class="section" id="other-considerations">
+<span id="other-considerations"></span><h3>Other considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="role-variables">
+<span id="role-variables"></span><h2>Role Variables<a class="headerlink" href="#role-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variables-conditionally-loaded">
+<span id="variables-conditionally-loaded"></span><h3>Variables conditionally loaded<a class="headerlink" href="#variables-conditionally-loaded" title="Permalink to this headline">¶</a></h3>
+<p>Those variables from <code class="docutils literal"><span class="pre">vars/*.{yml,json}</span></code> are loaded dynamically during task
+runtime using the <code class="docutils literal"><span class="pre">include_vars</span></code> module.</p>
+<p>Variables loaded from <code class="docutils literal"><span class="pre">vars/main.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># vars file for network</span>
+</pre></div>
+</div>
+<p>Variables loaded from <code class="docutils literal"><span class="pre">vars/Debian.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">network_pkgs</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bridge-utils</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ifenslave</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_ovs_service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvswitch-nonetwork.service</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ovs_pkg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvswitch-switch</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_conf_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/etc/network/interfaces.d&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_device_file_prefix</span><span class="p p-Indicator">:</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Variables loaded from <code class="docutils literal"><span class="pre">vars/RedHat.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">network_pkgs</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">libselinux-python</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bridge-utils</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">iputils</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_ovs_service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvswitch.service</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ovs_pkg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvswitch</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_conf_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/etc/sysconfig/network-scripts&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_device_file_prefix</span><span class="p p-Indicator">:</span> <span class="s">&quot;ifcfg-&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-vars">
+<span id="default-vars"></span><h3>Default vars<a class="headerlink" href="#default-vars" title="Permalink to this headline">¶</a></h3>
+<p>Defaults from <code class="docutils literal"><span class="pre">defaults/main.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># defaults file for network</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_pkg_state</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">latest</span>
+
+<span class="c1"># device defaults</span>
+<span class="l l-Scalar l-Scalar-Plain">network_onboot</span><span class="p p-Indicator">:</span> <span class="s">&#39;yes&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_peerdns</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_device_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Ethernet</span>
+
+<span class="c1"># ethernet defaults</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ethernet_linkdelay</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="c1"># bridge defaults</span>
+<span class="l l-Scalar l-Scalar-Plain">network_bridge_delay</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="c1"># ipv4 defaults</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv4_fatal</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+
+<span class="c1"># RHEL ipv6 defaults</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv6_init</span><span class="p p-Indicator">:</span> <span class="s">&#39;yes&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv6_fatal</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv6_autoconf</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv6_router</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">network_ipv6_forwarding</span><span class="p p-Indicator">:</span> <span class="s">&#39;no&#39;</span>
+
+<span class="c1"># Debian ifupdown ipv6 defaults</span>
+<span class="c1"># see http://manpages.ubuntu.com/manpages/wily/en/man5/interfaces.5.html</span>
+
+<span class="c1"># accept_ra default value differ according to method</span>
+<span class="c1">#   dhcp -&gt; 1</span>
+<span class="c1">#   static -&gt; 2</span>
+<span class="c1">#   auto -&gt; 2</span>
+<span class="l l-Scalar l-Scalar-Plain">network_accept_ra</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>        <span class="c1"># (0=off, 1=on, 2=on+forwarding)</span>
+<span class="l l-Scalar l-Scalar-Plain">network_dhcp</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>             <span class="c1"># auto method -&gt; use stateless DHCPv6 (0=off, 1=on)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network_autoconf</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>         <span class="c1"># Perform stateless autoconfiguration (0=off, 1=on)</span>
+<span class="l l-Scalar l-Scalar-Plain">network_dad_attempts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>    <span class="c1"># Number of attempts to settle DAD (0 to disable)</span>
+<span class="l l-Scalar l-Scalar-Plain">network_dad_interval</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>   <span class="c1"># DAD state polling interval in seconds</span>
+
+<span class="c1"># prevent deletion on cleanup</span>
+<span class="l l-Scalar l-Scalar-Plain">network_unmanaged_devices</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lo</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ovs-system</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">vboxnet0</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">vibr0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-with-ansible-galaxy">
+<span id="install-with-ansible-galaxy"></span><h3>Install with Ansible Galaxy<a class="headerlink" href="#install-with-ansible-galaxy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ansible-galaxy install archf.network
+</pre></div>
+</div>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">archf.network</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-with-git">
+<span id="install-with-git"></span><h3>Install with git<a class="headerlink" href="#install-with-git" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want a global installation, clone it into your <code class="docutils literal"><span class="pre">roles_path</span></code>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git clone git@github.com:archf/ansible-network.git /path/to/roles_path
+</pre></div>
+</div>
+<p>But I often add it as a submdule in a given <code class="docutils literal"><span class="pre">playbook_dir</span></code> repository.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git submodule add git@github.com:archf/ansible-network.git &lt;playbook_dir&gt;/roles/network
+</pre></div>
+</div>
+<p>As the role is not managed by Ansible Galaxy, you do not have to specify the
+github user account.</p>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">network</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dependencies">
+<span id="dependencies"></span><h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>None.</p>
+</div>
+<div class="section" id="todo">
+<span id="todo"></span><h2>Todo<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>improve route template (scope &amp; type support)</li>
+<li>improve device handler -&gt; reconfigure live ip addr with ip commands</li>
+<li>improve device handler -&gt; reconfigure live routes with ip commands</li>
+<li>make it work on ubuntu//debian</li>
+</ul>
+</div>
+<div class="section" id="license">
+<span id="license"></span><h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>MIT.</p>
+</div>
+<div class="section" id="author-information">
+<span id="author-information"></span><h2>Author Information<a class="headerlink" href="#author-information" title="Permalink to this headline">¶</a></h2>
+<p>Felix Archambault.</p>
+<hr class="docutils" />
+<p>This README was generated using ansidoc. This tool is available on pypi!</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip3 install ansidoc
+
+<span class="c1"># validate by running a dry-run (will output result to stdout)</span>
+ansidoc --dry-run &lt;rolepath&gt;
+
+<span class="c1"># generate you role readme file</span>
+ansidoc &lt;rolepath&gt;
+</pre></div>
+</div>
+<p>You can even use it programatically from sphinx. Check it out.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
