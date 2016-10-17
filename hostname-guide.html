@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hostname convention &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="index.html"/>
+        <link rel="next" title="ansible-accounts" href="role-accounts-README.html"/>
+        <link rel="prev" title="Ansible Masterbook" href="README.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Ansible Masterbook</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-accounts-README.html">ansible-accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxcm-README.html">ansible-lxcm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Hostname convention</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/hostname-guide.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hostname-convention">
+<span id="hostname-convention"></span><h1>Hostname convention<a class="headerlink" href="#hostname-convention" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>owner is specified explicitly when other than me</li>
+<li>location is specified only when other than home?</li>
+<li>unless &#8216;-lb-&#8216; is specified in the hostname, the server is a production machine</li>
+</ul>
+<p>sample string format:</p>
+<p><owner>-location-&lt;lb (if lb only)&gt;-&lt;3 letter acronym&gt;[0-9]{2,3}&gt;
+<owner>-location-&lt;3 letter acronym&gt;[0-9]{2,3}&gt;</p>
+<p>available locations:
+h: home
+c: machine in cloud
+v: vm or vps</p>
+</div>
+<div class="section" id="list-of-acronyms-by-type-of-servers">
+<span id="list-of-acronyms-by-type-of-servers"></span><h1>List of acronyms (by type of servers)<a class="headerlink" href="#list-of-acronyms-by-type-of-servers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>web servers<ul>
+<li>web web server</li>
+<li>gs git server</li>
+<li>ws wiki server</li>
+<li>db db server</li>
+<li>px proxy server</li>
+<li>rpx reverse proxy server</li>
+</ul>
+</li>
+<li>access control<ul>
+<li>lda ldap server</li>
+</ul>
+</li>
+<li>dns, dhcp and provisionning<ul>
+<li>dn dns server</li>
+<li>dh dhcp server</li>
+<li>ps provisionning server</li>
+</ul>
+</li>
+<li>networking equipmement<ul>
+<li>lb loadbalancer</li>
+<li>fw firewall</li>
+<li>gw gateway</li>
+<li>ir &#8220;inner or inside&#8221; router</li>
+<li>sw switch</li>
+</ul>
+</li>
+<li>workstations<ul>
+<li>de desktop environnement</li>
+<li>des desktop server</li>
+<li>ds desktop server (desktop and server at the same time)</li>
+<li>wde windows desktop</li>
+<li>ltp laptop</li>
+</ul>
+</li>
+<li>multipurpose (say a docker host running multiple containers)<ul>
+<li>ss system server</li>
+</ul>
+</li>
+<li>storage<ul>
+<li>bk backup server</li>
+<li>ftp ftp server</li>
+<li>is install server</li>
+<li>nas file server</li>
+<li>san san server</li>
+</ul>
+</li>
+<li>mail<ul>
+<li>mx mail exchange</li>
+<li>mr mail relay</li>
+</ul>
+</li>
+<li>logging and monitoring<ul>
+<li>ms monitoring server</li>
+<li>log syslog server</li>
+</ul>
+</li>
+<li>misc<ul>
+<li>wss window special server</li>
+</ul>
+</li>
+<li>chat<ul>
+<li>cs chat server</li>
+</ul>
+</li>
+<li>ephemeral<ul>
+<li>vs vagant server</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="role-accounts-README.html" class="btn btn-neutral float-right" title="ansible-accounts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral" title="Ansible Masterbook" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

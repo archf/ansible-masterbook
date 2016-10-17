@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to ansible-masterbook’s documentation! &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="#"/>
+        <link rel="next" title="Ansible Masterbook" href="README.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Ansible Masterbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-accounts-README.html">ansible-accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxcm-README.html">ansible-lxcm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Welcome to ansible-masterbook&#8217;s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-ansible-masterbook-s-documentation">
+<h1>Welcome to ansible-masterbook&#8217;s documentation!<a class="headerlink" href="#welcome-to-ansible-masterbook-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Ansible Masterbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#list-of-quite-stable-roles">list of quite stable roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#interesting-roles-from-other-people">interesting roles from other people</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#todo">Todo:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#roles-to-find-or-create">roles to find or create</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#ad-hoc-roles">ad-hoc roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#other-tasks">other tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#thoughts">Thoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#some-roles-should-be-executed-on-all-machines-by-default">Some roles should be executed on all machines by default</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-accounts-README.html">ansible-accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#usergroups">Usergroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#workstations">Workstations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#ssh-keys-management">SSH keys management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-accounts-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-accounts-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ansiblecm-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ansiblecm-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-ansiblecm-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ansiblecm-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-ansiblecm-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ansiblecm-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-bootstrap-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-bootstrap-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-bootstrap-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-bootstrap-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-bootstrap-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-bootstrap-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-common-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-common-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-common-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-common-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-common-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-common-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-fail2ban-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-fail2ban-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-fail2ban-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-fail2ban-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-fail2ban-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-fail2ban-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#ansible-version">Ansible version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#other-considerations">Other considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-lxc-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxc-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxcm-README.html">ansible-lxcm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxcm-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxcm-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-lxcm-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-lxcm-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-lxcm-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-lxcm-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#ansible-version">Ansible version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#other-considerations">Other considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#templates">Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#configuration-table">Configuration table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#interesting-tips">Interesting Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-network-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-network-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ntpd-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ntpd-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-ntpd-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-ntpd-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-ntpd-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-ntpd-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-openssh-server-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-openssh-server-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-openssh-server-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-openssh-server-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-openssh-server-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-openssh-server-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#description">Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#add-a-mount-to-fstab">Add a mount to fstab</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-packages-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-packages-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-resolv-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-resolv-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-resolv-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-resolv-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-resolv-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-resolv-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-samba-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-samba-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-samba-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-samba-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-samba-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-samba-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#ansible-version">Ansible version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#other-considerations">Other considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-synergy-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#todo">Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-synergy-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-workstation-README.html#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-workstation-README.html#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-workstation-README.html#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="role-workstation-README.html#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="role-workstation-README.html#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role-workstation-README.html#role-stack">Role stack</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="README.html" class="btn btn-neutral float-right" title="Ansible Masterbook" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

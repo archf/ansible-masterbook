@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ansible-lxcm &mdash; ansible-masterbook 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ansible-masterbook 1.0 documentation" href="index.html"/>
+        <link rel="next" title="ansible-network" href="role-network-README.html"/>
+        <link rel="prev" title="ansible-lxc" href="role-lxc-README.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ansible-masterbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Ansible Masterbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html">Hostname convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hostname-guide.html#list-of-acronyms-by-type-of-servers">List of acronyms (by type of servers)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-accounts-README.html">ansible-accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ansiblecm-README.html">ansible-ansiblecm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-bootstrap-README.html">ansible-bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-common-README.html">ansible-common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-fail2ban-README.html">ansible-fail2ban</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-lxc-README.html">ansible-lxc</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ansible-lxcm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-version">Ansible version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#role-variables">Role Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables-conditionally-loaded">Variables conditionally loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-vars">Default vars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-ansible-galaxy">Install with Ansible Galaxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-git">Install with git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ansible-role-dependencies">Ansible role dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author-information">Author Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#role-stack">Role stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role-network-README.html">ansible-network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-ntpd-README.html">ansible-ntpd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-openssh-server-README.html">ansible-openssh-server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-packages-README.html">ansible-packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-resolv-README.html">ansible-resolv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-samba-README.html">ansible-samba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-synergy-README.html">ansible-synergy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-workstation-README.html">ansible-workstation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ansible-masterbook</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>ansible-lxcm</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/role-lxcm-README.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ansible-lxcm">
+<span id="ansible-lxcm"></span><h1>ansible-lxcm<a class="headerlink" href="#ansible-lxcm" title="Permalink to this headline">¶</a></h1>
+<p>A role to manage lxc containers on a host.</p>
+<div class="section" id="requirements">
+<span id="requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible-version">
+<span id="ansible-version"></span><h3>Ansible version<a class="headerlink" href="#ansible-version" title="Permalink to this headline">¶</a></h3>
+<p>Minimum required ansible version is 2.0.</p>
+</div>
+</div>
+<div class="section" id="description">
+<span id="description"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The goal is to get vagrant, vagrant-lxc, livirt-lxc out of the way.
+Define useful alias</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># start container (akin to vagrant up)</span>
+<span class="nb">alias</span> <span class="nv">acu</span><span class="o">=</span><span class="s2">&quot;ansible -i local -e lxcm_state=started&quot;</span>
+
+<span class="c1"># start container (akin to vagrant halt)</span>
+<span class="nb">alias</span> <span class="nv">ach</span><span class="o">=</span><span class="s2">&quot;ansible -i local -e lxcm_state=stopped&quot;</span>
+
+<span class="c1"># start container (akin to vagrant reload)</span>
+<span class="nb">alias</span> <span class="nv">acu</span><span class="o">=</span><span class="s2">&quot;ansible -i local -e lxcm_state=restarted&quot;</span>
+
+<span class="c1"># start container (akin to vagrant destroy)</span>
+<span class="nb">alias</span> <span class="nv">acd</span><span class="o">=</span><span class="s2">&quot;ansible -i local -e lxcm_state=absent&quot;</span>
+
+<span class="c1"># freeze container</span>
+<span class="nb">alias</span> <span class="nv">acu</span><span class="o">=</span><span class="s2">&quot;ansible -i local -e lxcm_state=frozen&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="role-variables">
+<span id="role-variables"></span><h2>Role Variables<a class="headerlink" href="#role-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variables-conditionally-loaded">
+<span id="variables-conditionally-loaded"></span><h3>Variables conditionally loaded<a class="headerlink" href="#variables-conditionally-loaded" title="Permalink to this headline">¶</a></h3>
+<p>None.</p>
+</div>
+<div class="section" id="default-vars">
+<span id="default-vars"></span><h3>Default vars<a class="headerlink" href="#default-vars" title="Permalink to this headline">¶</a></h3>
+<p>Defaults from <code class="docutils literal"><span class="pre">defaults/main.yml</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># defaults file for ansible-lxcm</span>
+
+<span class="l l-Scalar l-Scalar-Plain">private_dir</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">playbook_dir</span><span class="nv"> </span><span class="s">}}/private&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">lxcm_default_grp</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">ansible_hostname</span><span class="nv"> </span><span class="s">}}_c&quot;</span>
+
+<span class="c1"># default container group to add container instance to</span>
+<span class="l l-Scalar l-Scalar-Plain">lxcm_child_grp</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;all_c&quot;</span>
+
+<span class="c1"># default dns domain (used when generating inventory dynamically)</span>
+<span class="l l-Scalar l-Scalar-Plain">lxcm_domain</span><span class="p p-Indicator">:</span> <span class="s">&quot;lxc&quot;</span>
+
+<span class="c1"># boolean to figure if we need to reprovision or not. Value dependends on</span>
+<span class="c1"># lxcm_state.</span>
+<span class="l l-Scalar l-Scalar-Plain">lxcm_provision</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-with-ansible-galaxy">
+<span id="install-with-ansible-galaxy"></span><h3>Install with Ansible Galaxy<a class="headerlink" href="#install-with-ansible-galaxy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ansible-galaxy install archf.lxcm
+</pre></div>
+</div>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">archf.lxcm</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-with-git">
+<span id="install-with-git"></span><h3>Install with git<a class="headerlink" href="#install-with-git" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want a global installation, clone it into your <code class="docutils literal"><span class="pre">roles_path</span></code>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git clone git@github.com:archf/ansible-lxcm.git /path/to/roles_path
+</pre></div>
+</div>
+<p>But I often add it as a submdule in a given <code class="docutils literal"><span class="pre">playbook_dir</span></code> repository.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>git submodule add git@github.com:archf/ansible-lxcm.git &lt;playbook_dir&gt;/roles/lxcm
+</pre></div>
+</div>
+<p>As the role is not managed by Ansible Galaxy, you do not have to specify the
+github user account.</p>
+<p>Basic usage is:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">lxcm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ansible-role-dependencies">
+<span id="ansible-role-dependencies"></span><h2>Ansible role dependencies<a class="headerlink" href="#ansible-role-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>None.</p>
+</div>
+<div class="section" id="license">
+<span id="license"></span><h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>MIT.</p>
+</div>
+<div class="section" id="author-information">
+<span id="author-information"></span><h2>Author Information<a class="headerlink" href="#author-information" title="Permalink to this headline">¶</a></h2>
+<p>Felix Archambault.</p>
+</div>
+<div class="section" id="role-stack">
+<span id="role-stack"></span><h2>Role stack<a class="headerlink" href="#role-stack" title="Permalink to this headline">¶</a></h2>
+<p>This role was carefully selected to be part an ultimate deck of roles to manage
+your infrastructure.</p>
+<p>All roles&#8217; documentation is wrapped in this <a class="reference external" href="http://127.0.0.1:8000/">convenient guide</a>.</p>
+<hr class="docutils" />
+<p>This README was generated using ansidoc. This tool is available on pypi!</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip3 install ansidoc
+
+<span class="c1"># validate by running a dry-run (will output result to stdout)</span>
+ansidoc --dry-run &lt;rolepath&gt;
+
+<span class="c1"># generate you role readme file</span>
+ansidoc &lt;rolepath&gt;
+</pre></div>
+</div>
+<p>You can even use it programatically from sphinx. Check it out.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="role-network-README.html" class="btn btn-neutral float-right" title="ansible-network" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="role-lxc-README.html" class="btn btn-neutral" title="ansible-lxc" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Felix Archambault.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
