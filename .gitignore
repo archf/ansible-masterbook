@@ -5,3 +5,5 @@ private/*
 filter_plugins/*.pyc
 .vagrant/*
 .ropeproject
+gh-pages
+roles/network/tmp/*
