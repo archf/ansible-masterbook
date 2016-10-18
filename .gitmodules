@@ -10,9 +10,6 @@
 [submodule "roles/accounts"]
 	path = roles/accounts
 	url = git@github.com:archf/accounts.git
-[submodule "roles/workstation"]
-	path = roles/workstation
-	url = git@github.com:archf/workstation.git
 [submodule "roles/openssh-server"]
 	path = roles/openssh-server
   url = git@github.com:archf/ansible-openssh-server.git
@@ -40,3 +37,6 @@
 [submodule "roles/bootstrap"]
 	path = roles/bootstrap
 	url = git@github.com:archf/ansible-bootstrap.git
+[submodule "roles/workstation"]
+	path = roles/workstation
+	url = git@github.com:archf/ansible-workstation.git
