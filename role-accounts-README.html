@@ -358,8 +358,12 @@ ssh_config:
 <span class="c1"># keys, users&#39;s ssh_config, ...etc.</span>
 <span class="l l-Scalar l-Scalar-Plain">groups_dir</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">playbook_dir</span><span class="nv"> </span><span class="s">}}/private/groups&quot;</span>
 
-<span class="c1"># Will include a `debug.yml` task file which will print variable information.</span>
-<span class="l l-Scalar l-Scalar-Plain">users_debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+<span class="c1"># Include debugging tasks that prints variable information when adding and</span>
+<span class="c1"># removing unix groups.</span>
+<span class="l l-Scalar l-Scalar-Plain">groupadd_debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+<span class="l l-Scalar l-Scalar-Plain">groupdel_debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+
+<span class="l l-Scalar l-Scalar-Plain">users_usergroups</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[]</span>
 
 <span class="c1"># Don&#39;t generate private ssh key in user accounts on every machine, consider</span>
 <span class="c1"># agent forwarding instead.</span>
@@ -409,7 +413,9 @@ ssh_config:
   <span class="l l-Scalar l-Scalar-Plain">groups</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">omit</span>
   <span class="l l-Scalar l-Scalar-Plain">append</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>         <span class="c1"># Append to group</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">update_password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">on_create</span> <span class="c1"># Default to &#39;on_create&#39; (will change passwd if they differ)</span>
+  <span class="c1"># Default to &#39;on_create&#39; (will change passwd if they differ)</span>
+  <span class="l l-Scalar l-Scalar-Plain">update_password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">on_create</span>
+  <span class="c1"># update_password: always</span>
 
   <span class="c1"># This &#39;home&#39; variable is the path prefix to the directory that will contain</span>
   <span class="c1"># a user account. If you work on Solaris you could set this to</span>

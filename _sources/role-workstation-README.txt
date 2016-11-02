@@ -54,6 +54,11 @@ workstation_pkgs:
   - xbindkeys
   - pdfshuffler
   - lxd
+  - network-manager-openconnect
+  - network-manager-vpnc
+  - network-manager-openvpn
+  - network-manager-ssh
+  - stoken
   # - lxc
   # - lxc-templates
   # - python3-lxc
@@ -118,6 +123,32 @@ Defaults from `defaults/main.yml`.
 
 ```yaml
 workstation_pkg_state: latest
+
+workstation_pip_pkgs:
+  - sphinx-autobuild
+  - recommonmark
+  - sphinxcontrib-libreoffice
+  - sphinxcontrib-exceltable
+  - sphinx_rtd_theme
+  - tabulate
+  - netaddr
+  - passlib
+  - yaml2rst
+  - m2r
+  - jinja2
+  - pyyaml
+  - pytest
+  - hypothesis
+  - twine
+  - flake8
+  - flake8-docstrings
+  - autopep8
+  - Sphinx
+  # - pip
+  # ldap
+  # imaging libraries
+  # - pil
+  # - pillow
 
 ```
 

@@ -216,6 +216,11 @@ runtime using the <code class="docutils literal"><span class="pre">include_vars<
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xbindkeys</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pdfshuffler</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lxd</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">network-manager-openconnect</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">network-manager-vpnc</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">network-manager-openvpn</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">network-manager-ssh</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stoken</span>
   <span class="c1"># - lxc</span>
   <span class="c1"># - lxc-templates</span>
   <span class="c1"># - python3-lxc</span>
@@ -275,6 +280,32 @@ runtime using the <code class="docutils literal"><span class="pre">include_vars<
 <span id="default-vars"></span><h3>Default vars<a class="headerlink" href="#default-vars" title="Permalink to this headline">¶</a></h3>
 <p>Defaults from <code class="docutils literal"><span class="pre">defaults/main.yml</span></code>.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">workstation_pkg_state</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">latest</span>
+
+<span class="l l-Scalar l-Scalar-Plain">workstation_pip_pkgs</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sphinx-autobuild</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">recommonmark</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sphinxcontrib-libreoffice</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sphinxcontrib-exceltable</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sphinx_rtd_theme</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tabulate</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">netaddr</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">passlib</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">yaml2rst</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">m2r</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jinja2</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyyaml</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pytest</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hypothesis</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">twine</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">flake8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">flake8-docstrings</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">autopep8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sphinx</span>
+  <span class="c1"># - pip</span>
+  <span class="c1"># ldap</span>
+  <span class="c1"># imaging libraries</span>
+  <span class="c1"># - pil</span>
+  <span class="c1"># - pillow</span>
 </pre></div>
 </div>
 </div>

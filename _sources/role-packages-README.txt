@@ -154,6 +154,7 @@ common_pkgs:
   - curl
   - wget
   - python-selinux
+  - python3-venv
   # - ntopng
 
 ```
