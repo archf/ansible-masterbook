@@ -1,8 +1,8 @@
 ---
 
 # users_debug: yes
-users_generate_ssh_key: yes
-# users_default_domain: test.xyz
+# users_generate_ssh_key: yes
+users_default_domain: guavus
 users_exclusive_groupmembers: yes
 users_exclusive_groups: yes
 

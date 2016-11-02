@@ -1,7 +1,7 @@
 ---
 
 # bootstrap installation
-- hosts: all
+- hosts: workstations
   gather_facts: no
 
   roles:
@@ -12,9 +12,5 @@
   become: yes
 
   roles:
-    - accounts
     - common
-    - packages
     - workstation
-    - lxc
-    - synergy
